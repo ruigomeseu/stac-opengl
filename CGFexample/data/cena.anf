@@ -1,0 +1,199 @@
+<anf>
+	<globals>
+
+		<drawing mode="fill" shading="flat" background="0 0 0 1" />
+
+		<culling face="back" order="ccw" />
+
+		<!-- Parametros de iluminacao; seguem os parametros do OpenGL  -->
+		<lighting doublesided="true" local="false" enabled="true" ambient="0 0 0 0" />
+
+	</globals>
+	
+	<!-- bloco de camaras: o atributo "initial" identifica a camara/ponto de vista inicial, que tem de existir -->
+	<cameras initial="overviewFar" >
+
+		<perspective id="overviewNear" near="0.1" far="100" angle="45" pos="20 20 20" target="0 0 0" />
+		<perspective id="overviewFar" near="0.1" far="100" angle="45" pos="40 20 40" target="0 0 0" />
+		<perspective id="houseView" near="0.1" far="100" angle="45" pos="30 15 30" target="25 8 20" />
+
+		<ortho id="orthoFront" direction="x" near="-10" far="20" left="-30" right="10" top="20" bottom="-5" />
+		<ortho id="orthoBack" direction="z" near="-10" far="20" left="-5" right="30" top="20" bottom="-5" />
+
+	</cameras>
+
+
+
+
+<animations>
+    <!-- pode não existir qualquer nó “animation” se a cena não tiver animações -->
+    <!-- span é o tempo, em segundos, que a animação deve demorar * -->
+    <!-- nesta versão do formato ANF, type pode ter o valor “linear” ou "circular" -->
+
+    <animation id="linearAnimation" span="3" type="linear">
+        <controlpoint xx="0" yy="-5" zz="0" />
+        <controlpoint xx="0" yy="0" zz="0" />
+    </animation>
+
+    <animation id="linearAnimation2" span="3" type="linear">
+        <controlpoint xx="0" yy="0" zz="0" />
+        <controlpoint xx="0" yy="-5" zz="0" />
+    </animation>
+
+    <animation id="rotacao" span="10" type="circular" center="0 0 0" radius="3" startang="0" rotang="1000" />
+
+
+    <animation id="rotacaoVeiculo" span="10" type="circular" center="-11 0 -10" radius="0" startang="0" rotang="50" />
+
+    <animation id="linearAnimationVeiculo" span="10" type="linear">
+        <controlpoint xx="-10" yy="0" zz="0" />
+        <controlpoint xx="-11" yy="0" zz="-10" />
+    </animation>
+
+
+    <animation id="veiculoUp" span="10" type="linear">
+        <controlpoint xx="-4" yy="0" zz="-4" />
+        <controlpoint xx="-10" yy="00" zz="0" />
+        <controlpoint xx="-11" yy="0" zz="-10" />
+    </animation>
+
+</animations>
+
+	<!-- bloco de luzes -->
+	<lights>
+
+		<light id="omniLight" type="omni" enabled="false" marker="false" pos="4 4 4" >
+			<component type="ambient" value="1 0 1 1" />
+			<component type="diffuse" value="1 0 0 1" />
+			<component type="specular" value="1 0 0 1" />
+		</light>
+
+		<light id="spotLight1" type="spot" enabled="true" marker="true" pos="5 5 0" target="1 0 0" angle="-20" exponent="10" >
+			<component type="ambient" value="1 1 0.4 1" />
+			<component type="diffuse" value="1 1 0 1" />
+			<component type="specular" value="0.6 0.6 0.6 1" />
+		</light>
+		<light id="spotLight2" type="spot" enabled="true" marker="true" pos="15 10 20" target="10 5 5" angle="-90" exponent="90" >
+			<component type="ambient" value="0.4 0.4 0.4 1" />
+			<component type="diffuse" value="0.8 0.8 0.8 1" />
+			<component type="specular" value="1 0 0 1" />
+		</light>
+	</lights>
+
+	<textures>
+		<texture id="wall" file="/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/CGFlib-master/CGFexample/data/wall.jpg" texlength_s="1" texlength_t="1" />
+		<texture id="sea" file="/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/CGFlib-master/CGFexample/data/sea.jpg" texlength_s="1" texlength_t="1" />
+		<texture id="pirata" file="/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/CGFlib-master/CGFexample/data/pirata.jpg" texlength_s="1" texlength_t="1" />
+		<texture id="trunk" file="/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/CGFlib-master/CGFexample/data/trunk.jpg" texlength_s="1" texlength_t="1" />
+		<texture id="court" file="/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/CGFlib-master/CGFexample/data/floor.jpg" texlength_s="3" texlength_t="3" />
+		<texture id="leaves" file="/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/CGFlib-master/CGFexample/data/leaves.jpg" texlength_s="3" texlength_t="3" />
+		<texture id="door" file="/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/CGFlib-master/CGFexample/data/door.jpg" texlength_s="3" texlength_t="3" />
+
+		<texture id="roof" file="/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/CGFlib-master/CGFexample/data/roof.jpg" texlength_s="3" texlength_t="3" />
+
+		<texture id="white_wood" file="/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/white_wood.jpg" texlength_s="3" texlength_t="3" />
+			</textures>
+
+	<!-- bloco de materiais; -->
+	<appearances>
+
+		<appearance id="wall" shininess="10" textureref="wall">
+			<component type="ambient" value="0.5 0.5 0.5 1" />
+			<component type="diffuse" value="0.6 0.6 0.6 1" />
+			<component type="specular" value="0.1 0.1 0.1 1" />
+		</appearance>
+		<appearance id="court" shininess="50" textureref="court" >
+			<component type="ambient" value="0.4 0.4 0.4 1" />
+			<component type="diffuse" value="0.3 0.3 0.3 1" />
+			<component type="specular" value="0.5 0.5 0.5 1" />
+		</appearance>
+
+		<appearance id="trunk" shininess="100" textureref="trunk" >
+			<component type="ambient" value="1 0.8 0.9 1" />
+			<component type="diffuse" value="0.4 0.4 0.5 1" />
+			<component type="specular" value="1 0.9 0.5 1" />
+		</appearance>
+
+
+		<appearance id="leaves" shininess="50" textureref="leaves" >
+			<component type="ambient" value="0.4 0.4 0.4 1" />
+			<component type="diffuse" value="0.3 0.3 0.3 1" />
+			<component type="specular" value="0.5 0.5 0.5 1" />
+		</appearance>
+
+		<appearance id="door" shininess="50" textureref="door" >
+			<component type="ambient" value="0.4 0.4 0.4 1" />
+			<component type="diffuse" value="0.3 0.3 0.3 1" />
+			<component type="specular" value="0.5 0.5 0.5 1" />
+		</appearance>
+
+		<appearance id="roof" shininess="50" textureref="roof" >
+			<component type="ambient" value="0.4 0.4 0.4 0.5" />
+			<component type="diffuse" value="0.3 0.3 0.3 0.5" />
+			<component type="specular" value="0.5 0.5 0.5 0.5" />
+		</appearance>
+
+		<appearance id="bandeira" shininess="50" textureref="pirata" >
+			<component type="ambient" value="0.4 0.4 0.4 0.5" />
+			<component type="diffuse" value="0.3 0.3 0.3 0.5" />
+			<component type="specular" value="0.5 0.5 0.5 0.5" />
+		</appearance>
+
+		<appearance id="sea" shininess="100" textureref="sea" >
+			<component type="ambient" value="0.4 0.4 0.9 1" />
+			<component type="diffuse" value="0.6 0.6 0.6 1" />
+			<component type="specular" value="0.5 0.5 0.5 1" />
+		</appearance>
+
+		<appearance id="white_wood" shininess="100" textureref="white_wood" >
+			<component type="ambient" value="0.4 0.4 0.9 1" />
+			<component type="diffuse" value="0.6 0.6 0.6 1" />
+			<component type="specular" value="0.5 0.5 0.5 1" />
+		</appearance>
+
+
+	</appearances>
+
+	<graph rootid="cena">
+
+		<node id="cena" displaylist="false">
+			<transforms>
+			</transforms>
+
+			<appearanceref id="court" />
+
+			<primitives>
+
+			</primitives>
+
+			<descendants>
+				<noderef id="board" />
+			</descendants>
+		</node>
+        <node id="square">
+			<transforms>
+				<transform type="translate" to="0 0 1" />
+				<transform type="rotate" axis="x" angle="-90" />
+			</transforms>
+			<appearanceref id="inherit" />
+
+			<primitives>
+				<rectangle xy1="0 0" xy2="1 1"/>
+			</primitives>
+			<descendants>
+			</descendants>
+        </node>
+
+        <node id="board">
+			<transforms>
+			</transforms>
+			<appearanceref id="white_wood" />
+
+			<primitives>
+				<board x="5" y="5"/>
+			</primitives>
+			<descendants>
+			</descendants>
+        </node>
+	</graph>
+</anf>

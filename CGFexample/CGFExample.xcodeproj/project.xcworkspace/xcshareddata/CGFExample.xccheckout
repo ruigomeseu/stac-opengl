@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4714DF50-6162-4E5E-A3ED-8FBFE8059D1C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CGFExample</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>54B7E0D892D53BE755762D945395406E03D98771</key>
+		<string>https://github.com/ruigomeseu/graph-scene-opengl.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CGFexample/CGFExample.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>54B7E0D892D53BE755762D945395406E03D98771</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ruigomeseu/graph-scene-opengl.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>54B7E0D892D53BE755762D945395406E03D98771</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>54B7E0D892D53BE755762D945395406E03D98771</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CGFlib-master</string>
+		</dict>
+	</array>
+</dict>
+</plist>

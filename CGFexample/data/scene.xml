@@ -1,0 +1,49 @@
+<anf>
+    <globals>
+        <drawing mode="fill" shading="flat" background="0 0 0 1" />
+        <culling face="front" order="cw" />
+        <lighting doublesided="true" local="true" enabled="true" ambient="1 1 1 1" />
+    </globals>
+    
+    <cameras initial="persp" >
+        <!-- tem de existir, pelo menos uma camara dos tipos seguintes (perspective ou ortho) -->
+        
+        <perspective id="persp" near="0.1" far="100" angle="45" pos="10 10 10" target="0 0 0" />
+        <ortho id="ortho" direction="x" near="0.1" far="100" left="-2" right="20" top="20" bottom="-2" />
+        <ortho id="ortho1" direction="y" near="1" far="1" left="3" right="2" top="3" bottom="2" />
+        
+    </cameras>
+    
+    <!-- bloco do grafo; "rootid" identifica o no de raiz -->
+    <graph rootid="initialNode">
+        
+        <!-- tem de existir, pelo menos, um bloco "node" -->
+        <node id="initialNode">
+            <!-- bloco "transforms" obrigatorio -->
+            <transforms>
+                <transform type="translate" to="-1 -1 3" />
+                
+            </transforms>
+            
+            <appearanceref id="inherit" />
+            
+            <!-- bloco "primitives" -->
+            <primitives>
+                <rectangle xy1="-1 -1" xy2="1 1" />
+                <triangle xyz1="0 0 0" xyz2="0 1 0" xyz3="0 0 2"/>
+                <cylinder base="2" top="2" height="3" slices="25" stacks="25" />
+                <sphere radius="4" slices="30" stacks="30" />
+                <torus inner="1" outer="3" slices="32" loops="32" />
+            </primitives>
+            
+            <!-- bloco "descendants" -->
+            <descendants>
+                <noderef id="mrDescendente" />
+                
+            </descendants>
+        </node>
+    </graph>
+
+</anf>
+
+
