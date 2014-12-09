@@ -7,11 +7,10 @@
 //
 
 #include "Board.h"
-#include "Piece.h"
 
 void Board::draw(){
     Rectangle * square = new Rectangle();
-    Piece * piece = new Piece();
+    
     square->setX1(0);
     square->setX2(5);
     square->setY1(0);
@@ -30,7 +29,21 @@ void Board::draw(){
             glPushMatrix();
             glTranslatef(5*i, 0, 5*j);
             glRotated(-90, 1,0,0);
-            piece->draw();
+            if(strcmp(board[i][j].c_str(), "vv")==0){
+                
+            }else if(strcmp(board[i][j].c_str(), "p1") == 0){
+                piece->setPiece("p1");
+                piece->draw();
+            }else if(strcmp(board[i][j].c_str(), "p2") == 0){
+                piece->setPiece("p2");
+                piece->draw();
+            }else if(strcmp(board[i][j].c_str(), "a3") == 0){
+                piece->setPiece("a3");
+                piece->draw();
+            }else if(strcmp(board[i][j].c_str(), "b3") == 0){
+                piece->setPiece("b3");
+                piece->draw();
+            }
             glPopMatrix();
         }
         

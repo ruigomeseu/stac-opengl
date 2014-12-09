@@ -2,9 +2,27 @@
 #include "PickScene.h"
 #include "CGFapplication.h"
 
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netdb.h>
+#include <stdio.h>
+#include <string.h>	// for memcpy()...
+#include <stdlib.h>	// for atoi()...
+#include <unistd.h>	// for gethostname()...
+#include <ctype.h>	// for tolower()...
+#include <iostream>
+
+#define BUFS	1024
+#define NAMS	64
+
+
 // buffer to be used to store the hits during picking
 #define BUFSIZE 256
 GLuint selectBuf[BUFSIZE];
+
+bool openedSocket = false;
+int sock_address;
 
 void PickInterface::processMouse(int button, int state, int x, int y) 
 {
@@ -66,6 +84,62 @@ void PickInterface::performPicking(int x, int y)
 	processHits(hits, selectBuf);
 }
 
+int openSocket(std::string hostname, int port){
+    int sock;
+    struct sockaddr_in server;
+    struct hostent *hp;
+    char buf[BUFS];
+    
+    sock = socket(AF_INET, SOCK_STREAM, 0);
+    if (sock < 0)
+    {
+        perror("Opening stream socket");
+        exit(1);
+    }
+    
+    /* Connect socket using server name indicated in the command line */
+    server.sin_family = AF_INET;
+    hp = gethostbyname(hostname.c_str());
+    
+    if (hp == NULL)
+    {
+        perror("Trying to get host by name");
+        exit(2);
+    }
+    memcpy((char *)&server.sin_addr, (char *)hp->h_addr, hp->h_length);
+    server.sin_port = htons(port);
+    
+    if (connect(sock, (struct sockaddr *)&server, sizeof server) < 0)
+    {
+        perror("Connecting stream socket");
+        exit(1);
+    }
+    
+    return sock;
+}
+
+void closeSocket(int socket){
+    close(socket);
+}
+
+void sendMessageSocket(int socket, std::string message){
+    if (write (socket, message.c_str(), strlen(message.c_str())) < 0)
+        perror("Writing on stream socket");
+    
+}
+
+void receiveMessageSocket(int socket){
+    int pos = 0;
+    char msgRecv[BUFS];
+    while(true){
+        recv(socket, &msgRecv[pos], 1, 0);
+        if(msgRecv[pos]=='\n')
+            break;
+        pos++;
+    }
+    std::cout << msgRecv << std::endl;
+}
+
 void PickInterface::processHits (GLint hits, GLuint buffer[]) 
 {
 	GLuint *ptr = buffer;
@@ -73,6 +147,10 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
 	GLuint *selected=NULL;
 	GLuint nselected;
 
+    if(!openedSocket){
+        sock_address = openSocket("127.0.0.1", 60070);
+        openedSocket=true;
+    }
 	// iterate over the list of hits, and choosing the one closer to the viewer (lower depth)
 	for (int i=0;i<hits;i++) {
 		int num = *ptr; ptr++;
@@ -93,9 +171,12 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
 		// this should be replaced by code handling the picked object's ID's (stored in "selected"), 
 		// possibly invoking a method on the scene class and passing "selected" and "nselected"
 		printf("Picked ID's: ");
-		for (int i=0; i<nselected; i++)
+        sendMessageSocket(sock_address, "comando([[p1,p1,p1,p1,b1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[a1,p1,p1,p1,p1]],a1,1,1,1).\n");
+        for (int i=0; i<nselected; i++){
 			printf("%d ",selected[i]);
+        }
 		printf("\n");
+        receiveMessageSocket(sock_address);
 	}
 	else
 		printf("Nothing selected while picking \n");	

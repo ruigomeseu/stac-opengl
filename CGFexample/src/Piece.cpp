@@ -19,7 +19,33 @@ void Piece::draw(){
     cylinder->setStacks(20);
     cylinder->setSlices(20);
     
-    cylinder->draw();
+    appearance_normal->apply();
+    
+    if(strcmp(piece.c_str(), "p1") ==0){
+        cylinder->draw();
+    }else if(strcmp(piece.c_str(), "p2") == 0){
+        cylinder->draw();
+        glTranslatef(0, 0, 1);
+        cylinder->draw();
+    }else if(strcmp(piece.c_str(), "a3") == 0){
+        cylinder->draw();
+        glTranslatef(0, 0, 1);
+        cylinder->draw();
+        glTranslatef(0, 0, 1);
+        cylinder->draw();
+        glTranslatef(0, 0, 1);
+        appearance_white->apply();
+        cylinder->draw();
+    }else if(strcmp(piece.c_str(), "b3") == 0){
+        cylinder->draw();
+        glTranslatef(0, 0, 1);
+        cylinder->draw();
+        glTranslatef(0, 0, 1);
+        cylinder->draw();
+        glTranslatef(0, 0, 1);
+        appearance_black->apply();
+        cylinder->draw();
+    }
     
     glPopMatrix();
     

@@ -11,11 +11,31 @@
 
 class Piece : public Primitives{
 private:
-public:
+    std::string piece;
     
+    
+    
+    Appearance * appearance_black = new Appearance();
+    Appearance * appearance_white = new Appearance();
+    
+    Appearance * appearance_normal = new Appearance();
+
+    
+public:
+    Piece(){
+        appearance_white->setTexture("/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/white_wood.jpg");
+        appearance_black->setTexture("/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/black_wood.jpg");
+        appearance_normal->setTexture("/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/normal_wood.jpg");
+        
+    }
     std::string getType() { return "piece"; }
     
     void draw();
+    
+    void setPiece(std::string piece){
+        this->piece=piece;
+    }
+    std::string getPiece(){ return this->piece; }
 };
 
 #endif /* defined(__CGFExample__Piece__) */
