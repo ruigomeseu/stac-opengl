@@ -128,7 +128,7 @@ void sendMessageSocket(int socket, std::string message){
     
 }
 
-void MessageSocket(int socket){
+void receiveMessageSocket(int socket){
     int pos = 0;
     char msgRecv[BUFS];
     while(true){
