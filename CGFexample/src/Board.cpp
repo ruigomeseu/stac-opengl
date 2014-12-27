@@ -9,6 +9,8 @@
 #include "Board.h"
 
 void Board::draw(){
+    
+    this->loadFromString("[[p1,p1,p1,p1,b1],[a2,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[vv,p1,p1,p1,p1]].");
     Rectangle * square = new Rectangle();
     
     square->setX1(0);
@@ -93,4 +95,41 @@ void Board::draw(){
     glPopMatrix();
     
     
+}
+
+
+
+std::string Board::toString(){
+    std::string final_string;
+    final_string.append("[");
+    for (int i = 0; i < 5; i++){
+        final_string.append("[");
+        for (int j = 0; j< 5; j++){
+            final_string.append(board[i][j]);
+            if(j < 4)
+                final_string.append(",");
+        }
+        final_string.append("]");
+        if(i < 4)
+            final_string.append(",");
+    }
+    final_string.append("]");
+    return final_string;
+}
+
+void Board::loadFromString(std::string board_string){
+    char * pch;
+    const char s[3] = ",.";
+    const char s1[3] = "[]";
+    char board_array[1024];
+    
+    strcpy(board_array, board_string.c_str());
+    pch = strtok(board_array, s);
+    
+    
+    while (pch != NULL)
+    {
+        printf ("%s",pch);
+        pch++;
+    }
 }

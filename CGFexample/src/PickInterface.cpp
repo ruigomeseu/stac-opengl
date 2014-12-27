@@ -128,7 +128,7 @@ void sendMessageSocket(int socket, std::string message){
     
 }
 
-void receiveMessageSocket(int socket){
+void MessageSocket(int socket){
     int pos = 0;
     char msgRecv[BUFS];
     while(true){
@@ -171,7 +171,23 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
 		// this should be replaced by code handling the picked object's ID's (stored in "selected"), 
 		// possibly invoking a method on the scene class and passing "selected" and "nselected"
 		printf("Picked ID's: ");
-        sendMessageSocket(sock_address, "comando([[p1,p1,p1,p1,b1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[a1,p1,p1,p1,p1]],a1,1,1,1).\n");
+        std::string cmd;
+        cmd.append("comando(");
+        cmd.append("[[p1,p1,p1,p1,b1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[a1,p1,p1,p1,p1]]");
+        cmd.append(",");
+        cmd.append("a1");
+        cmd.append(",");
+        cmd.append(to_string(selected[0]));
+        cmd.append(",");
+        cmd.append(to_string(selected[1]));
+        cmd.append(",");
+        cmd.append("1");
+        cmd.append(").\n");
+        
+        
+        
+        
+        sendMessageSocket(sock_address, cmd);
         for (int i=0; i<nselected; i++){
 			printf("%d ",selected[i]);
         }

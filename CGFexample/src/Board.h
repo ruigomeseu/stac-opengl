@@ -14,6 +14,10 @@
 #include <cstring>
 #include "Piece.h"
 
+#include <string.h>
+
+#include <stdio.h>
+
 
 class Board : public Primitives{
 private:
@@ -24,7 +28,6 @@ private:
     Appearance * appearance_black = new Appearance();
     Piece * piece;
     std::string board[5][5];
-
 public:
     Board(){
         piece = new Piece();
@@ -45,6 +48,10 @@ public:
     
     std::string getType() { return "board"; }
     void draw();
+    
+    
+    std::string toString();
+    void loadFromString(std::string board_string);
 };
 
 #endif /* defined(__CGFExample__Board__) */

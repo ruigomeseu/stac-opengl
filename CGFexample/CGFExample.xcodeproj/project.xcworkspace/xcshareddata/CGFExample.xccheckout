@@ -10,6 +10,8 @@
 	<string>CGFExample</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>4435C5234B3D19D9ACC697B2A0EE60CC1C9442E0</key>
+		<string>https://github.com/ruigomeseu/stac-opengl.git</string>
 		<key>54B7E0D892D53BE755762D945395406E03D98771</key>
 		<string>https://github.com/ruigomeseu/graph-scene-opengl.git</string>
 	</dict>
@@ -17,15 +19,17 @@
 	<string>CGFexample/CGFExample.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>54B7E0D892D53BE755762D945395406E03D98771</key>
+		<key>4435C5234B3D19D9ACC697B2A0EE60CC1C9442E0</key>
 		<string>../../..</string>
+		<key>54B7E0D892D53BE755762D945395406E03D98771</key>
+		<string>../../../../CGFlib-master</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/ruigomeseu/graph-scene-opengl.git</string>
+	<string>https://github.com/ruigomeseu/stac-opengl.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>54B7E0D892D53BE755762D945395406E03D98771</string>
+	<string>4435C5234B3D19D9ACC697B2A0EE60CC1C9442E0</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>54B7E0D892D53BE755762D945395406E03D98771</string>
 			<key>IDESourceControlWCCName</key>
 			<string>CGFlib-master</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4435C5234B3D19D9ACC697B2A0EE60CC1C9442E0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Game</string>
 		</dict>
 	</array>
 </dict>
