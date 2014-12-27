@@ -10,16 +10,12 @@
 
 void Board::draw(){
     
-    //this->loadFromString("[[p1,p1,p1,p1,b1],[a2,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[vv,p1,p1,p1,p1]].");
     Rectangle * square = new Rectangle();
     
     square->setX1(0);
     square->setX2(5);
     square->setY1(0);
     square->setY2(5);
-    
-    
-    
     
     glPushMatrix();
     glTranslatef(2.5, 0, 2.5);
@@ -117,19 +113,39 @@ std::string Board::toString(){
     return final_string;
 }
 
-void Board::loadFromString(std::string board_string){
-    char * pch;
-    const char s[3] = ",.";
-    const char s1[3] = "[]";
-    char board_array[1024];
+void Board::loadFromString(std::string board_string)
+{
+    cout << "boas tardes" << endl;
+    cout << board_string << endl;
     
-    strcpy(board_array, board_string.c_str());
-    pch = strtok(board_array, s);
+    string pieceRegex = "[a-z]+[0-9]*";
     
+    regex reg1(pieceRegex, regex_constants::icase);
     
-    while (pch != NULL)
-    {
-        printf ("%s",pch);
-        pch++;
+    sregex_iterator it(board_string.begin(), board_string.end(), reg1);
+    sregex_iterator it_end;
+    
+    int pieceNumber = 0;
+    
+    while(it != it_end) {
+        std::smatch match = *it;
+        std::string match_str = match.str();
+        
+        board[pieceNumber/5][pieceNumber%5] = match_str;
+        
+        ++it;
+        pieceNumber++;
     }
+    
+    for(int y = 0; y < 5; y++){
+        for(int x = 0; x < 5; x++){
+            cout << board[y][x] << " ";
+        }
+        cout << endl;
+    }
+    
+    cout << "\n What is your current salary? \t";
+    std::string teste;
+    cin >> teste;
+    
 }

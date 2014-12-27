@@ -95,7 +95,7 @@ void Scene::init()
     globals = new Globals();
     
     graph = new Graph();
-    char * anfPath = "/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/cena.anf";
+    char * anfPath = "/Users/ruigomes/Projects/OpenGL/stac-opengl/CGFexample/data/cena.anf";
     
     ANFInterpreter anfInterpreter = ANFInterpreter(anfPath, this);
     

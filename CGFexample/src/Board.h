@@ -13,10 +13,12 @@
 #include "Primitives.h"
 #include <cstring>
 #include "Piece.h"
-
+#include <sstream>
 #include <string.h>
-
 #include <stdio.h>
+#include <regex>
+
+using namespace std;
 
 
 class Board : public Primitives{
@@ -31,13 +33,9 @@ private:
 public:
     Board(){
         piece = new Piece();
-        appearance_white->setTexture("/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/white_wood.jpg");
-        appearance_black->setTexture("/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/black_wood.jpg");
-        for(int i = 0; i < 5; i++){
-            for(int j = 0; j< 5; j++){
-                board[i][j] = "b3";
-            }
-        }
+        appearance_white->setTexture("/Users/ruigomes/Projects/OpenGL/stac-opengl/CGFexample/data/white_wood.jpg");
+        appearance_black->setTexture("/Users/ruigomes/Projects/OpenGL/stac-opengl/CGFexample/data/black_wood.jpg");
+        this->loadFromString("[[p1,p1,p1,p1,b1],[a2,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[vv,p1,p1,p1,p1]].");
     }
     
     int getSizeX(){return this->sizex; }
