@@ -35,11 +35,23 @@ void Board::draw(){
             }else if(strcmp(board[i][j].c_str(), "p2") == 0){
                 piece->setPiece("p2");
                 piece->draw();
+            }else if(strcmp(board[i][j].c_str(), "a1") == 0){
+                piece->setPiece("a1");
+                piece->draw();
+            }else if(strcmp(board[i][j].c_str(), "b1") == 0){
+                piece->setPiece("b1");
+                piece->draw();
             }else if(strcmp(board[i][j].c_str(), "a3") == 0){
                 piece->setPiece("a3");
                 piece->draw();
             }else if(strcmp(board[i][j].c_str(), "b3") == 0){
                 piece->setPiece("b3");
+                piece->draw();
+            }else if(strcmp(board[i][j].c_str(), "a2") == 0){
+                piece->setPiece("a2");
+                piece->draw();
+            }else if(strcmp(board[i][j].c_str(), "b2") == 0){
+                piece->setPiece("b2");
                 piece->draw();
             }
             glPopMatrix();
@@ -115,7 +127,6 @@ std::string Board::toString(){
 
 void Board::loadFromString(std::string board_string)
 {
-    cout << "boas tardes" << endl;
     cout << board_string << endl;
     
     string pieceRegex = "[a-z]+[0-9]*";
@@ -143,9 +154,4 @@ void Board::loadFromString(std::string board_string)
         }
         cout << endl;
     }
-    
-    cout << "\n What is your current salary? \t";
-    std::string teste;
-    cin >> teste;
-    
 }

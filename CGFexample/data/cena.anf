@@ -81,18 +81,17 @@
 	</lights>
 
 	<textures>
-		<texture id="wall" file="/Users/ruigomes/Projects/OpenGL/stac-opengl/CGFexample/data/wall.jpg" texlength_s="1" texlength_t="1" />
-		<texture id="sea" file="/Users/ruigomes/Projects/OpenGL/stac-opengl/CGFexample/data/sea.jpg" texlength_s="1" texlength_t="1" />
-		<texture id="pirata" file="/Users/ruigomes/Projects/OpenGL/stac-opengl/CGFexample/data/pirata.jpg" texlength_s="1" texlength_t="1" />
-		<texture id="trunk" file="/Users/ruigomes/Projects/OpenGL/stac-opengl/CGFexample/data/trunk.jpg" texlength_s="1" texlength_t="1" />
-		<texture id="court" file="/Users/ruigomes/Projects/OpenGL/stac-opengl/CGFexample/data/floor.jpg" texlength_s="3" texlength_t="3" />
-		<texture id="leaves" file="/Users/ruigomes/Projects/OpenGL/stac-opengl/CGFexample/data/leaves.jpg" texlength_s="3" texlength_t="3" />
-		<texture id="door" file="/Users/ruigomes/Projects/OpenGL/stac-opengl/CGFexample/data/door.jpg" texlength_s="3" texlength_t="3" />
+		<texture id="wall" file="/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/wall.jpg" texlength_s="1" texlength_t="1" />
+		<texture id="sea" file="/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/sea.jpg" texlength_s="1" texlength_t="1" />
+		<texture id="pirata" file="/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/pirata.jpg" texlength_s="1" texlength_t="1" />
+		<texture id="trunk" file="/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/trunk.jpg" texlength_s="1" texlength_t="1" />
+		<texture id="court" file="/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/floor.jpg" texlength_s="3" texlength_t="3" />
+		<texture id="leaves" file="/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/leaves.jpg" texlength_s="3" texlength_t="3" />
+		<texture id="door" file="/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/door.jpg" texlength_s="3" texlength_t="3" />
+		<texture id="roof" file="/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/roof.jpg" texlength_s="3" texlength_t="3" />
+		<texture id="white_wood" file="/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/white_wood.jpg" texlength_s="3" texlength_t="3" />
 
-		<texture id="roof" file="/Users/ruigomes/Projects/OpenGL/stac-opengl/CGFexample/data/roof.jpg" texlength_s="3" texlength_t="3" />
-
-		<texture id="white_wood" file="/Users/ruigomes/Projects/OpenGL/stac-opengl/CGFexample/data/white_wood.jpg" texlength_s="3" texlength_t="3" />
-			</textures>
+	</textures>
 
 	<!-- bloco de materiais; -->
 	<appearances>
@@ -170,19 +169,6 @@
 				<noderef id="board" />
 			</descendants>
 		</node>
-        <node id="square">
-			<transforms>
-				<transform type="translate" to="0 0 1" />
-				<transform type="rotate" axis="x" angle="-90" />
-			</transforms>
-			<appearanceref id="inherit" />
-
-			<primitives>
-				<rectangle xy1="0 0" xy2="1 1"/>
-			</primitives>
-			<descendants>
-			</descendants>
-        </node>
 
         <node id="board">
 			<transforms>
@@ -192,8 +178,24 @@
 			<primitives>
 				<board x="5" y="5"/>
 			</primitives>
+
 			<descendants>
 			</descendants>
         </node>
+
+        <node id="square">
+			<transforms>
+				<transform type="translate" to="0 0 1" />
+				<transform type="rotate" axis="x" angle="-90" />
+			</transforms>
+			<appearanceref id="white_wood" />
+
+			<primitives>
+				<rectangle xy1="0 0" xy2="1 1"/>
+			</primitives>
+			<descendants>
+			</descendants>
+        </node>
+
 	</graph>
 </anf>

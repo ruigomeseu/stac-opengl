@@ -50,6 +50,19 @@ public:
     void setAnimations(std::map<std::string, Animation*> * animations) { this->animations = animations; }
     std::map<std::string, Animation*> * getAnimations(){ return this->animations; }
     
+    
+    Board * getGameBoard(){
+        std::vector<Primitives *> * primitives = this->getGraph()->getBoardElement()->getPrimitives();
+        
+        for (unsigned int i = 0; i < primitives->size(); i++)
+        {
+            if(primitives->at(i)->getType() == "board"){
+                return (Board *) primitives->at(i);
+            }
+        }
+        return NULL;
+    }
+    
 private:
     CGFlight* light0;
 	CGFobject* obj;

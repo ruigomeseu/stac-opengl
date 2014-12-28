@@ -33,9 +33,9 @@ private:
 public:
     Board(){
         piece = new Piece();
-        appearance_white->setTexture("/Users/ruigomes/Projects/OpenGL/stac-opengl/CGFexample/data/white_wood.jpg");
-        appearance_black->setTexture("/Users/ruigomes/Projects/OpenGL/stac-opengl/CGFexample/data/black_wood.jpg");
-        this->loadFromString("[[p1,p1,p1,p1,b1],[a2,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[vv,p1,p1,p1,p1]].");
+        appearance_white->setTexture("/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/white_wood.jpg");
+        appearance_black->setTexture("/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/black_wood.jpg");
+        this->loadFromString("[[p1,p1,p1,p1,b1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[a1,p1,p1,p1,p1]].");
     }
     
     int getSizeX(){return this->sizex; }

@@ -23,9 +23,9 @@ private:
     
 public:
     Piece(){
-        appearance_white->setTexture("/Users/ruigomes/Projects/OpenGL/stac-opengl/CGFexample/data/white_wood.jpg");
-        appearance_black->setTexture("/Users/ruigomes/Projects/OpenGL/stac-opengl/CGFexample/data/black_wood.jpg");
-        appearance_normal->setTexture("/Users/ruigomes/Projects/OpenGL/stac-opengl/CGFexample/data/normal_wood.jpg");
+        appearance_white->setTexture("/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/white_wood.jpg");
+        appearance_black->setTexture("/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/black_wood.jpg");
+        appearance_normal->setTexture("/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/normal_wood.jpg");
         
     }
     std::string getType() { return "piece"; }

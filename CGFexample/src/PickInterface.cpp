@@ -12,6 +12,8 @@
 #include <unistd.h>	// for gethostname()...
 #include <ctype.h>	// for tolower()...
 #include <iostream>
+#include "Graph.h"
+#include "Scene.h"
 
 #define BUFS	1024
 #define NAMS	64
@@ -128,16 +130,21 @@ void sendMessageSocket(int socket, std::string message){
     
 }
 
-void receiveMessageSocket(int socket){
+std::string receiveMessageSocket(int socket){
     int pos = 0;
     char msgRecv[BUFS];
+    char bufferCleaner[BUFS];
+    
     while(true){
         recv(socket, &msgRecv[pos], 1, 0);
         if(msgRecv[pos]=='\n')
+        {
             break;
+        }
         pos++;
     }
-    std::cout << msgRecv << std::endl;
+    recv(socket, &bufferCleaner, 255, 0);
+    return msgRecv;
 }
 
 void PickInterface::processHits (GLint hits, GLuint buffer[]) 
@@ -173,7 +180,7 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
 		printf("Picked ID's: ");
         std::string cmd;
         cmd.append("comando(");
-        cmd.append("[[p1,p1,p1,p1,b1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[a1,p1,p1,p1,p1]]");
+        cmd.append(((Scene *) scene)->getGameBoard()->toString());
         cmd.append(",");
         cmd.append("a1");
         cmd.append(",");
@@ -181,7 +188,7 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
         cmd.append(",");
         cmd.append(to_string(selected[1]));
         cmd.append(",");
-        cmd.append("1");
+        cmd.append("0");
         cmd.append(").\n");
         
         
@@ -192,7 +199,10 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
 			printf("%d ",selected[i]);
         }
 		printf("\n");
-        receiveMessageSocket(sock_address);
+        std::string newBoard;
+        newBoard = receiveMessageSocket(sock_address);
+        cout << "received = " <<newBoard<<endl;
+        ((Scene *) scene)->getGameBoard()->loadFromString(newBoard);
 	}
 	else
 		printf("Nothing selected while picking \n");	

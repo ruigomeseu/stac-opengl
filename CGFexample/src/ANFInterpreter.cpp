@@ -247,7 +247,6 @@ void ANFInterpreter::loadGraph(){
         TiXmlElement * appearanceElement = nodeElements->FirstChildElement("appearanceref");
         
         
-        
         if(primitivesElements)
         {
             node->setPrimitives(loadPrimitives(primitivesElements));
@@ -260,6 +259,7 @@ void ANFInterpreter::loadGraph(){
         {
             node->setDescendants(loadDescendants(descendantsElement));
         }
+        
         
         node->setID(nodeID);
         

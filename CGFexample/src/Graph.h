@@ -30,6 +30,10 @@ public:
         this->rootid = rootid;
     }
     
+    Node* getBoardElement(){
+        return nodes->find("board")->second;
+    }
+    
 };
 
 
