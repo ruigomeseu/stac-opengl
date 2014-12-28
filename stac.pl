@@ -590,13 +590,13 @@ game_aux(Board, Player, EndGame, 1, X, Y, Carry, FinalBoard, Stream):-
 	write(Player) , write(' '), write('turn. '), nl,
 
 
-	checkMove(Board, X, Y, Player, Carry, Stream),
+	checkMove(Board, X, Y, Player, Carry, Stream),!,
 
 	carry(Player, CarryPlayer, Carry),
 
 	% remove player spawn and move to another position
 	remove_spawn(Board, [], FB, CarryPlayer),
-	move(FB, X,Y, [], FinalBoard, CarryPlayer).
+	move(FB, X,Y, [], FinalBoard, CarryPlayer), !.
 
 
 

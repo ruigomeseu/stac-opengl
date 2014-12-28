@@ -137,13 +137,22 @@ std::string receiveMessageSocket(int socket){
     
     while(true){
         recv(socket, &msgRecv[pos], 1, 0);
-        if(msgRecv[pos]=='\n')
+        if(msgRecv[pos]=='.')
         {
+            msgRecv[pos+1]='\n';
             break;
         }
         pos++;
     }
-    recv(socket, &bufferCleaner, 255, 0);
+    /*
+    if(strcmp(msgRecv, "fail") !=0){
+        recv(socket, &bufferCleaner, BUFS, 0);
+        cout << "Buffer = " << bufferCleaner <<endl;
+        recv(socket, &bufferCleaner, BUFS, 0);
+        cout << "Buffer = " << bufferCleaner <<endl;
+        recv(socket, &bufferCleaner, BUFS, 0);
+        cout << "Buffer = " << bufferCleaner <<endl;
+    }*/
     return msgRecv;
 }
 
@@ -182,7 +191,7 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
         cmd.append("comando(");
         cmd.append(((Scene *) scene)->getGameBoard()->toString());
         cmd.append(",");
-        cmd.append("a1");
+        cmd.append(((Scene *) scene)->getGameBoard()->getCurrentPlayer());
         cmd.append(",");
         cmd.append(to_string(selected[0]));
         cmd.append(",");
@@ -202,7 +211,11 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
         std::string newBoard;
         newBoard = receiveMessageSocket(sock_address);
         cout << "received = " <<newBoard<<endl;
-        ((Scene *) scene)->getGameBoard()->loadFromString(newBoard);
+        // if fail doesn't change board.
+        if(strstr(newBoard.c_str(), "fail.")==NULL){
+            ((Scene *) scene)->getGameBoard()->changePlayer();
+            ((Scene *) scene)->getGameBoard()->loadFromString(newBoard);
+        }
 	}
 	else
 		printf("Nothing selected while picking \n");	

@@ -111,7 +111,6 @@ void Scene::init()
     
     
     
-    
 	obj=new ExampleObject();
     materialAppearance=new CGFappearance();
 	shader=new CGFshader("../data/texshader.vert","../data/texshader.frag");

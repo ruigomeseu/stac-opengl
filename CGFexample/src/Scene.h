@@ -13,6 +13,7 @@
 #include "Animation.h"
 #include "CGFinterface.h"
 #include "Board.h"
+#include <cstring>
 
 class Scene : public CGFscene
 {
@@ -50,7 +51,6 @@ public:
     void setAnimations(std::map<std::string, Animation*> * animations) { this->animations = animations; }
     std::map<std::string, Animation*> * getAnimations(){ return this->animations; }
     
-    
     Board * getGameBoard(){
         std::vector<Primitives *> * primitives = this->getGraph()->getBoardElement()->getPrimitives();
         
@@ -72,6 +72,7 @@ private:
     
     std::map<std::string, Texture *> * textures;
     std::map<std::string, Appearance *> * appearances;
+    
     
     Camera * activeCamera;
     

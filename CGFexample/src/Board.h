@@ -30,12 +30,18 @@ private:
     Appearance * appearance_black = new Appearance();
     Piece * piece;
     std::string board[5][5];
+    
+    
+    // current player
+    std::string currentPlayer;
+    
 public:
     Board(){
         piece = new Piece();
         appearance_white->setTexture("/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/white_wood.jpg");
         appearance_black->setTexture("/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/black_wood.jpg");
         this->loadFromString("[[p1,p1,p1,p1,b1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[a1,p1,p1,p1,p1]].");
+        this->currentPlayer="a1";
     }
     
     int getSizeX(){return this->sizex; }
@@ -50,6 +56,23 @@ public:
     
     std::string toString();
     void loadFromString(std::string board_string);
+    
+    
+    
+    
+    std::string getCurrentPlayer(){
+        return this->currentPlayer;
+    }
+    
+    void changePlayer(){
+        if(strcmp(currentPlayer.c_str(), "a1") == 0){
+            currentPlayer="b1";
+        }else{
+            currentPlayer="a1";
+        }
+    }
+    
+
 };
 
 #endif /* defined(__CGFExample__Board__) */
