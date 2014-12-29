@@ -63,6 +63,14 @@ public:
         return NULL;
     }
     
+    std::vector<std::string> getBoardsHistory(){
+        return this->boardsHistory;
+    }
+    
+    void addBoardToHistory(std::string board){
+        boardsHistory.push_back(board);
+    }
+    
 private:
     CGFlight* light0;
 	CGFobject* obj;
@@ -88,6 +96,8 @@ private:
     long lastMilis = 0;
 
     bool wired;
+    
+    std::vector<std::string> boardsHistory;
     
 };
 

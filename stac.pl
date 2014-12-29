@@ -530,8 +530,9 @@ game_aux(Board, Player, EndGame, 2):-
 game_aux(Board, Player, 2, 3):-
 	next_player(Player, NextPlayer),
 	printBoard(Board),
-	write(NextPlayer), write(' won this game!'), nl,
-	game(B).
+	format(Stream, '~q.~n', 'end_game'),
+	write('end_game'),
+	flush_output(Stream), fail.
 
 game_aux(Board, Player, EndGame, 3):-
 	read(IN),
@@ -634,4 +635,5 @@ parse_input(quit, ok-bye) :- !.
 		
 
 comando(Board, Player, X, Y, Carry, Answer, Stream) :-
-	game_aux(Board, Player, 0, 1, X, Y, Carry, Answer, Stream).
+	end_game(Board, Player, 0, TowerNumber),
+	game_aux(Board, Player, TowerNumber, 1, X, Y, Carry, Answer, Stream).

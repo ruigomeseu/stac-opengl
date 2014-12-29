@@ -35,6 +35,8 @@ private:
     // current player
     std::string currentPlayer;
     
+    bool carry;
+    
 public:
     Board(){
         piece = new Piece();
@@ -42,6 +44,7 @@ public:
         appearance_black->setTexture("/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/black_wood.jpg");
         this->loadFromString("[[p1,p1,p1,p1,b1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[a1,p1,p1,p1,p1]].");
         this->currentPlayer="a1";
+        this->carry=false;
     }
     
     int getSizeX(){return this->sizex; }
@@ -64,6 +67,19 @@ public:
         return this->currentPlayer;
     }
     
+    bool getCarry(){ return carry; }
+    
+    void setCarry(bool carry){
+        this->carry = carry;
+    }
+    
+    void toggleCarry(){
+        if(carry){
+            carry = false;
+        }else{
+            carry = true;
+        }
+    }
     void changePlayer(){
         if(strcmp(currentPlayer.c_str(), "a1") == 0){
             currentPlayer="b1";

@@ -53,6 +53,12 @@ void Board::draw(){
             }else if(strcmp(board[i][j].c_str(), "b2") == 0){
                 piece->setPiece("b2");
                 piece->draw();
+            }else if(strcmp(board[i][j].c_str(), "a4") == 0){
+                piece->setPiece("a4");
+                piece->draw();
+            }else if(strcmp(board[i][j].c_str(), "b4") == 0){
+                piece->setPiece("b4");
+                piece->draw();
             }
             glPopMatrix();
         }
