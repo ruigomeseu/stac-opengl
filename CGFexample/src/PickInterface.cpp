@@ -133,6 +133,7 @@ void sendMessageSocket(int socket, std::string message){
 void PickInterface::processKeyboard(unsigned char key, int x, int y){
     switch(key){
         case 'a':
+            cout << "a"<<endl;
             ((Scene *) scene)->getGameBoard()->toggleCarry();
             break;
         default:
@@ -214,7 +215,7 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
         cmd.append(carry);
         cmd.append(").\n");
         
-        
+        cout << "current player =" <<((Scene *) scene)->getGameBoard()->getCurrentPlayer()<<endl;
         
         
         sendMessageSocket(sock_address, cmd);
@@ -226,16 +227,16 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
         newBoard = receiveMessageSocket(sock_address);
         cout << "received = " <<newBoard<<endl;
         // if fail doesn't change board.
-        if(strstr(newBoard.c_str(), "end_game")==NULL){
+        if(strstr(newBoard.c_str(), "end_game.")!=NULL){
             std::cout << "ended game" << std::endl;
+            ((Scene *) scene)->getGameBoard()->resetBoard();
         }
         
-        if(strstr(newBoard.c_str(), "fail.")==NULL){
+        if(strstr(newBoard.c_str(), "fail.")==NULL && strstr(newBoard.c_str(), "end_game.")!=NULL){
             ((Scene *) scene)->getGameBoard()->changePlayer();
             ((Scene *) scene)->getGameBoard()->loadFromString(newBoard);
             // save new board to history of boards.
-            ((Scene *) scene)->addBoardToHistory(((Scene *) scene)->getGameBoard()->toString());
-            
+            ((Scene *) scene)->getGameBoard()->addBoardToHistory(((Scene *) scene)->getGameBoard()->toString());
             ((Scene *) scene)->getGameBoard()->setCarry(false);
         }
 	}

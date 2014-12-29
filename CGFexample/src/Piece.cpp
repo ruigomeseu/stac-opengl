@@ -27,6 +27,12 @@ void Piece::draw(){
         cylinder->draw();
         glTranslatef(0, 0, 1);
         cylinder->draw();
+    }else if(strcmp(piece.c_str(), "a0") == 0){
+        appearance_white->apply();
+        cylinder->draw();
+    }else if(strcmp(piece.c_str(), "b0") == 0){
+        appearance_black->apply();
+        cylinder->draw();
     }else if(strcmp(piece.c_str(), "a1") == 0){
         appearance_white->apply();
         cylinder->draw();

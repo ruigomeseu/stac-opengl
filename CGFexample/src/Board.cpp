@@ -29,6 +29,12 @@ void Board::draw(){
             glRotated(-90, 1,0,0);
             if(strcmp(board[i][j].c_str(), "vv")==0){
                 
+            }else if(strcmp(board[i][j].c_str(), "a0") == 0){
+                piece->setPiece("a0");
+                piece->draw();
+            }else if(strcmp(board[i][j].c_str(), "b0") == 0){
+                piece->setPiece("b0");
+                piece->draw();
             }else if(strcmp(board[i][j].c_str(), "p1") == 0){
                 piece->setPiece("p1");
                 piece->draw();

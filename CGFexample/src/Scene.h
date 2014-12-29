@@ -63,13 +63,6 @@ public:
         return NULL;
     }
     
-    std::vector<std::string> getBoardsHistory(){
-        return this->boardsHistory;
-    }
-    
-    void addBoardToHistory(std::string board){
-        boardsHistory.push_back(board);
-    }
     
 private:
     CGFlight* light0;
@@ -97,7 +90,6 @@ private:
 
     bool wired;
     
-    std::vector<std::string> boardsHistory;
     
 };
 

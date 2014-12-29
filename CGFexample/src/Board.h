@@ -37,6 +37,9 @@ private:
     
     bool carry;
     
+    
+    std::vector<std::string> boardsHistory;
+    
 public:
     Board(){
         piece = new Piece();
@@ -61,7 +64,12 @@ public:
     void loadFromString(std::string board_string);
     
     
-    
+    void resetBoard(){
+        this->loadFromString("[[p1,p1,p1,p1,b1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[a1,p1,p1,p1,p1]].");
+        this->currentPlayer="a1";
+        this->carry=false;
+        this->boardsHistory.clear();
+    }
     
     std::string getCurrentPlayer(){
         return this->currentPlayer;
@@ -86,6 +94,16 @@ public:
         }else{
             currentPlayer="a1";
         }
+    }
+    
+    
+    
+    std::vector<std::string> getBoardsHistory(){
+        return this->boardsHistory;
+    }
+    
+    void addBoardToHistory(std::string board){
+        boardsHistory.push_back(board);
     }
     
 

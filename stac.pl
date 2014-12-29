@@ -530,9 +530,8 @@ game_aux(Board, Player, EndGame, 2):-
 game_aux(Board, Player, 2, 3):-
 	next_player(Player, NextPlayer),
 	printBoard(Board),
-	format(Stream, '~q.~n', 'end_game'),
-	write('end_game'),
-	flush_output(Stream), fail.
+	write(NextPlayer), write(' won this game!'), nl,
+	game(B).
 
 game_aux(Board, Player, EndGame, 3):-
 	read(IN),
@@ -583,8 +582,9 @@ game(Board):-
 game_aux(Board, Player, 2, 1, X, Y, Carry, FinalBoard, Stream):-
 	printBoard(Board),
 	next_player(Player, NextPlayer),
-	write(NextPlayer), write(' won this game!'), nl,
-	game(B).
+	format(Stream, '~q.~n', 'end_game'),
+	write('end_game'),
+	flush_output(Stream),!.
 
 game_aux(Board, Player, EndGame, 1, X, Y, Carry, FinalBoard, Stream):-
 	printBoard(Board),nl,nl,
