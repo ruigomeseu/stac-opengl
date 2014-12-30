@@ -584,7 +584,7 @@ game_aux(Board, Player, 2, 1, X, Y, Carry, FinalBoard, Stream):-
 	next_player(Player, NextPlayer),
 	format(Stream, '~q.~n', 'end_game'),
 	write('end_game'),
-	flush_output(Stream),!.
+	flush_output(Stream),!, serverLoop(Stream).
 
 game_aux(Board, Player, EndGame, 1, X, Y, Carry, FinalBoard, Stream):-
 	printBoard(Board),nl,nl,

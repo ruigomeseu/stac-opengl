@@ -232,7 +232,7 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
             ((Scene *) scene)->getGameBoard()->resetBoard();
         }
         
-        if(strstr(newBoard.c_str(), "fail.")==NULL && strstr(newBoard.c_str(), "end_game.")!=NULL){
+        if(strstr(newBoard.c_str(), "fail.")==NULL && strstr(newBoard.c_str(), "end_game.")==NULL){
             ((Scene *) scene)->getGameBoard()->changePlayer();
             ((Scene *) scene)->getGameBoard()->loadFromString(newBoard);
             // save new board to history of boards.
