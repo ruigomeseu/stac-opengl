@@ -73,6 +73,7 @@ next_piece(b0, b4, b3).
 
 
 % remove pawn when not carrying a piece
+remove_piece(a0, a0, vv).
 remove_piece(a0, a1, p1).
 remove_piece(a0, a2, p2).
 remove_piece(a0, a3, a4).
@@ -80,11 +81,13 @@ remove_piece(a0, a4, a4).
 remove_piece(a0, vv, vv).
 remove_piece(a0, p1, p1).
 remove_piece(a0, p2, p2).
+remove_piece(a0, b0, b0).
 remove_piece(a0, b1, b1).
 remove_piece(a0, b2, b2).
 remove_piece(a0, b3, b3).
 remove_piece(a0, b4, b4).
 
+remove_piece(b0, a0, a0).
 remove_piece(b0, a1, a1).
 remove_piece(b0, a2, a2).
 remove_piece(b0, a3, a3).
@@ -92,12 +95,14 @@ remove_piece(b0, a4, a4).
 remove_piece(b0, vv, vv).
 remove_piece(b0, p1, p1).
 remove_piece(b0, p2, p2).
+remove_piece(b0, b0, vv).
 remove_piece(b0, b1, p1).
 remove_piece(b0, b2, p2).
 remove_piece(b0, b3, b4).
 remove_piece(b0, b4, b4).
 
 % remove pawn when carrying a piece
+remove_piece(a1, a0, vv).
 remove_piece(a1, a1, vv).
 remove_piece(a1, a2, p2).
 remove_piece(a1, a3, a4).
@@ -105,11 +110,13 @@ remove_piece(a1, a4, a4).
 remove_piece(a1, vv, vv).
 remove_piece(a1, p1, p1).
 remove_piece(a1, p2, p2).
+remove_piece(a1, b0, b0).
 remove_piece(a1, b1, b1).
 remove_piece(a1, b2, b2).
 remove_piece(a1, b3, b3).
 remove_piece(a1, b4, b4).
 
+remove_piece(b1, b0, vv).
 remove_piece(b1, b1, vv).
 remove_piece(b1, b2, p1).
 remove_piece(b1, b3, b4).
@@ -117,6 +124,7 @@ remove_piece(b1, b4, b4).
 remove_piece(b1, vv, vv).
 remove_piece(b1, p1, p1).
 remove_piece(b1, p2, p2).
+remove_piece(b1, a0, a0).
 remove_piece(b1, a1, a1).
 remove_piece(b1, a2, a2).
 remove_piece(b1, a3, a3).
@@ -132,8 +140,10 @@ inc_counter(b1, b4, Aux, Counter):- Counter is Aux+1 .
 inc_counter(a1, vv, Aux, Counter):- Counter = Aux.
 inc_counter(a1, p1, Aux, Counter):- Counter = Aux.
 inc_counter(a1, p2, Aux, Counter):- Counter = Aux.
+inc_counter(a1, a0, Aux, Counter):- Counter = Aux.
 inc_counter(a1, a1, Aux, Counter):- Counter = Aux.
 inc_counter(a1, a2, Aux, Counter):- Counter = Aux.
+inc_counter(a1, b0, Aux, Counter):- Counter = Aux.
 inc_counter(a1, b1, Aux, Counter):- Counter = Aux.
 inc_counter(a1, b2, Aux, Counter):- Counter = Aux.
 inc_counter(a1, b3, Aux, Counter):- Counter = Aux.
@@ -142,10 +152,12 @@ inc_counter(a1, b4, Aux, Counter):- Counter = Aux.
 inc_counter(b1, vv, Aux, Counter):- Counter = Aux.
 inc_counter(b1, p1, Aux, Counter):- Counter = Aux.
 inc_counter(b1, p2, Aux, Counter):- Counter = Aux.
+inc_counter(b1, a0, Aux, Counter):- Counter = Aux.
 inc_counter(b1, a1, Aux, Counter):- Counter = Aux.
 inc_counter(b1, a2, Aux, Counter):- Counter = Aux.
 inc_counter(b1, a3, Aux, Counter):- Counter = Aux.
 inc_counter(b1, a4, Aux, Counter):- Counter = Aux.
+inc_counter(b1, b0, Aux, Counter):- Counter = Aux.
 inc_counter(b1, b1, Aux, Counter):- Counter = Aux.
 inc_counter(b1, b2, Aux, Counter):- Counter = Aux.
 
@@ -592,12 +604,14 @@ game_aux(Board, Player, EndGame, 1, X, Y, Carry, FinalBoard, Stream):-
 
 
 	checkMove(Board, X, Y, Player, Carry, Stream),!,
-
+	write('after checkmove'),
 	carry(Player, CarryPlayer, Carry),
-
+	write('after carry'),
 	% remove player spawn and move to another position
 	remove_spawn(Board, [], FB, CarryPlayer),
-	move(FB, X,Y, [], FinalBoard, CarryPlayer), !.
+	write('after remove'),
+	move(FB, X,Y, [], FinalBoard, CarryPlayer),
+	write('after move'), !.
 
 
 
