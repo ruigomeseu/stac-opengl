@@ -8,6 +8,26 @@
 
 #include "Board.h"
 
+void Board::animateIfExists(int i, int j, int pieceToAnimate[2])
+{
+    if(this->hasAnimation && i == pieceToAnimate[0] && j == pieceToAnimate[1])
+    {
+        if(this->animation->getFinished()){
+            cout << "animation ended" << endl;
+            this->hasAnimation = false;
+            loadFromString(boardsHistory.at(boardsHistory.size()-1));
+            setCarry(false);
+        }
+        
+        this->animation->increment(30);
+        glTranslatef(this->animation->getCurrentAnimationPoint().getX(),
+                     -this->animation->getCurrentAnimationPoint().getZ(),
+                     this->animation->getCurrentAnimationPoint().getY()
+                     );
+        
+    }
+}
+
 void Board::draw(){
     
     Rectangle * square = new Rectangle();
@@ -26,20 +46,15 @@ void Board::draw(){
         for(int j = 0; j< 5; j++){
             glPushMatrix();
             glTranslatef(5*i, 0, 5*j);
-            if(this->hasAnimation && i == pieceToAnimate[0] && j == pieceToAnimate[1])
-            {
-                this->animation->increment(30);
-                glTranslatef(this->animation->getCurrentAnimationPoint().getX(),
-                             this->animation->getCurrentAnimationPoint().getY(),
-                             this->animation->getCurrentAnimationPoint().getZ());
-            }
-            glRotated(-90, 1,0,0);
+            glRotated(-90, 1, 0, 0);
             if(strcmp(board[i][j].c_str(), "vv")==0){
                 
             }else if(strcmp(board[i][j].c_str(), "a0") == 0){
+                animateIfExists(i, j, pieceToAnimate);
                 piece->setPiece("a0");
                 piece->draw();
             }else if(strcmp(board[i][j].c_str(), "b0") == 0){
+                animateIfExists(i, j, pieceToAnimate);
                 piece->setPiece("b0");
                 piece->draw();
             }else if(strcmp(board[i][j].c_str(), "p1") == 0){
@@ -49,57 +64,108 @@ void Board::draw(){
                 piece->setPiece("p2");
                 piece->draw();
             }else if(strcmp(board[i][j].c_str(), "a1") == 0){
+                if(carry)
+                    animateIfExists(i, j, pieceToAnimate);
+                piece->setPiece("p1");
+                piece->draw();
+                glTranslatef(0, 0, 1);
+                if(!carry)
+                    animateIfExists(i, j, pieceToAnimate);
                 piece->setPiece("a1");
                 piece->draw();
             }else if(strcmp(board[i][j].c_str(), "b1") == 0){
+                if(carry)
+                    animateIfExists(i, j, pieceToAnimate);
+                piece->setPiece("p1");
+                piece->draw();
+                glTranslatef(0, 0, 1);
+                if(!carry)
+                    animateIfExists(i, j, pieceToAnimate);
+                
                 piece->setPiece("b1");
                 piece->draw();
             }else if(strcmp(board[i][j].c_str(), "a3") == 0){
+                if(carry)
+                    animateIfExists(i, j, pieceToAnimate);
                 piece->setPiece("p2");
                 piece->draw();
-                glTranslatef(0, 0, 1);
-                piece->setPiece("p1");
+                glTranslatef(0, 0, 2);
+                piece->setPiece("p2");
                 piece->draw();
-                glTranslatef(0, 0, 1);
+                glTranslatef(0, 0, 2);
+                if(!carry)
+                    animateIfExists(i, j, pieceToAnimate);
+                
                 piece->setPiece("a1");
                 piece->draw();
             }else if(strcmp(board[i][j].c_str(), "b3") == 0){
+                if(carry)
+                    animateIfExists(i, j, pieceToAnimate);
                 piece->setPiece("p2");
                 piece->draw();
-                glTranslatef(0, 0, 1);
-                piece->setPiece("p1");
+                glTranslatef(0, 0, 2);
+                piece->setPiece("p2");
                 piece->draw();
-                glTranslatef(0, 0, 1);
+                glTranslatef(0, 0, 2);
+                if(!carry)
+                    animateIfExists(i, j, pieceToAnimate);
+                
                 piece->setPiece("b1");
                 piece->draw();
             }else if(strcmp(board[i][j].c_str(), "a2") == 0){
+                if(carry)
+                    animateIfExists(i, j, pieceToAnimate);
                 piece->setPiece("p1");
                 piece->draw();
                 glTranslatef(0, 0, 1);
+                piece->setPiece("p1");
+                piece->draw();
+                glTranslatef(0, 0, 1);
+                if(!carry)
+                    animateIfExists(i, j, pieceToAnimate);
+                
                 piece->setPiece("a1");
                 piece->draw();
             }else if(strcmp(board[i][j].c_str(), "b2") == 0){
+                if(carry)
+                    animateIfExists(i, j, pieceToAnimate);
                 piece->setPiece("p1");
                 piece->draw();
                 glTranslatef(0, 0, 1);
+                piece->setPiece("p1");
+                piece->draw();
+                glTranslatef(0, 0, 1);
+                if(!carry)
+                    animateIfExists(i, j, pieceToAnimate);
+                
                 piece->setPiece("b1");
                 piece->draw();
             }else if(strcmp(board[i][j].c_str(), "a4") == 0){
+                if(carry)
+                    animateIfExists(i, j, pieceToAnimate);
                 piece->setPiece("p2");
                 piece->draw();
-                glTranslatef(0, 0, 1);
+                glTranslatef(0, 0, 2);
                 piece->setPiece("p2");
                 piece->draw();
-                glTranslatef(0, 0, 1);
+                glTranslatef(0, 0, 2);
+                if(!carry)
+                    animateIfExists(i, j, pieceToAnimate);
+                
                 piece->setPiece("a1");
                 piece->draw();
             }else if(strcmp(board[i][j].c_str(), "b4") == 0){
+                if(carry)
+                    animateIfExists(i, j, pieceToAnimate);
                 piece->setPiece("p2");
                 piece->draw();
-                glTranslatef(0, 0, 1);
+                glTranslatef(0, 0, 2);
                 piece->setPiece("p2");
                 piece->draw();
-                glTranslatef(0, 0, 1);
+                glTranslatef(0, 0, 2);
+                if(!carry)
+                    animateIfExists(i, j, pieceToAnimate);
+                
                 piece->setPiece("b1");
                 piece->draw();
             }
@@ -193,12 +259,11 @@ void Board::animate(int toX, int toY)
     this->pieceToAnimate[1] = positionY;
     this->hasAnimation = true;
     
-    this->animation = new LinearAnimation("animation", 3);
+    this->animation = new LinearAnimation("animation", 0);
     
     ControlPoint initialPoint = this->getOpenGlPosition(positionX, positionY);
     ControlPoint finalPoint = this->getOpenGlPosition(toX, toY);
     ControlPoint initialPointHeight = ControlPoint(initialPoint.getX(), initialPoint.getY() + 10, initialPoint.getZ());
-    
     ControlPoint finalPointHeight = ControlPoint(finalPoint.getX(), finalPoint.getY() + 10, finalPoint.getZ());
     
     this->animation->addControlPoint(initialPoint);

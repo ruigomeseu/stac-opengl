@@ -244,6 +244,9 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
         
         cout << "current player =" <<((Scene *) scene)->getGameBoard()->getCurrentPlayer()<<endl;
         
+        if(((Scene *) scene)->getGameBoard()->getHasAnimation()){
+            return;
+        }
         
         sendMessageSocket(sock_address, cmd);
         for (int i=0; i<nselected; i++){
@@ -261,11 +264,10 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
         
         if(strstr(newBoard.c_str(), "fail.")==NULL && strstr(newBoard.c_str(), "end_game.")==NULL){
             ((Scene * ) scene)->getGameBoard()->animate(selected[0], selected[1]);
-            ((Scene *) scene)->getGameBoard()->loadFromString(newBoard);
+           // ((Scene *) scene)->getGameBoard()->loadFromString(newBoard);
             // save new board to history of boards.
-            ((Scene *) scene)->getGameBoard()->addBoardToHistory(((Scene *) scene)->getGameBoard()->toString());
+            ((Scene *) scene)->getGameBoard()->addBoardToHistory(newBoard);
             ((Scene *) scene)->getGameBoard()->changePlayer();
-            ((Scene *) scene)->getGameBoard()->setCarry(false);
         }
 	}
 	else

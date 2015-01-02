@@ -58,6 +58,12 @@ public:
         this->hasAnimation = false;
     }
     
+    bool getHasAnimation(){
+        return this->hasAnimation;
+    }
+    
+    void animateIfExists(int i, int j, int pieceToAnimate[2]);
+    
     ControlPoint getOpenGlPosition(int x, int y);
     
     int getSizeX(){return this->sizex; }

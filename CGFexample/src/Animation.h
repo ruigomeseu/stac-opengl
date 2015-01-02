@@ -130,7 +130,11 @@ public:
     void calculateSpeed() {
         speed = totalDistance / span;
     }
-    
+    float abs(float value){
+        if(value > 0)
+            return value;
+        return -value;
+    }
     void increment(unsigned long t)
     {
         std::cout << "incrementing" << std::endl;
@@ -144,7 +148,7 @@ public:
             
             float distanceToWalkZ = (t * (controlPoints[currentPoint+1].getZ() - controlPoints[currentPoint].getZ()))/1000;
             
-            sumDistanceWalked += distanceToWalk;
+            sumDistanceWalked += abs(distanceToWalkX) + abs(distanceToWalkY) + abs(distanceToWalkZ);
             
             distanceToWalkX += currentAnimationPoint.getX();
             distanceToWalkY += currentAnimationPoint.getY();
