@@ -37,6 +37,26 @@
 		AA63E1CF16D415BF003287C6 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA63E1CE16D415BF003287C6 /* OpenGL.framework */; };
 		AA63E1D316D415CB003287C6 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA63E1D216D415CB003287C6 /* GLUT.framework */; };
 		AA63E22E16D421B5003287C6 /* libCGF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA63E22D16D421B5003287C6 /* libCGF.a */; };
+		D99A52AB1A56A91000E633EA /* black_wood.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52971A56A8FD00E633EA /* black_wood.jpg */; };
+		D99A52AC1A56A91000E633EA /* cena.anf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52981A56A8FD00E633EA /* cena.anf */; };
+		D99A52AD1A56A91000E633EA /* cena1.anf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52991A56A8FD00E633EA /* cena1.anf */; };
+		D99A52AE1A56A91000E633EA /* demograph.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A529A1A56A8FD00E633EA /* demograph.xml */; };
+		D99A52AF1A56A91000E633EA /* door.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A529B1A56A8FD00E633EA /* door.jpg */; };
+		D99A52B01A56A91000E633EA /* duff.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A529C1A56A8FD00E633EA /* duff.png */; };
+		D99A52B11A56A91000E633EA /* floor.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A529D1A56A8FD00E633EA /* floor.jpg */; };
+		D99A52B21A56A91000E633EA /* leaves.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A529E1A56A8FD00E633EA /* leaves.jpg */; };
+		D99A52B31A56A91000E633EA /* normal_wood.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A529F1A56A8FD00E633EA /* normal_wood.jpg */; };
+		D99A52B41A56A91000E633EA /* pirata.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A01A56A8FD00E633EA /* pirata.jpg */; };
+		D99A52B51A56A91000E633EA /* pyramid.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A11A56A8FD00E633EA /* pyramid.jpg */; };
+		D99A52B61A56A91000E633EA /* ricky.anf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A21A56A8FD00E633EA /* ricky.anf */; };
+		D99A52B71A56A91000E633EA /* roof.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A31A56A8FD00E633EA /* roof.jpg */; };
+		D99A52B81A56A91000E633EA /* scene.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A41A56A8FD00E633EA /* scene.xml */; };
+		D99A52B91A56A91000E633EA /* sea.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A51A56A8FD00E633EA /* sea.jpg */; };
+		D99A52BA1A56A91000E633EA /* texshader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A61A56A8FD00E633EA /* texshader.frag */; };
+		D99A52BB1A56A91000E633EA /* texshader.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A71A56A8FD00E633EA /* texshader.vert */; };
+		D99A52BC1A56A91000E633EA /* trunk.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A81A56A8FD00E633EA /* trunk.jpg */; };
+		D99A52BD1A56A91000E633EA /* wall.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A91A56A8FD00E633EA /* wall.jpg */; };
+		D99A52BE1A56A91000E633EA /* white_wood.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52AA1A56A8FD00E633EA /* white_wood.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +66,26 @@
 			dstPath = ../data;
 			dstSubfolderSpec = 16;
 			files = (
+				D99A52AB1A56A91000E633EA /* black_wood.jpg in CopyFiles */,
+				D99A52AC1A56A91000E633EA /* cena.anf in CopyFiles */,
+				D99A52AD1A56A91000E633EA /* cena1.anf in CopyFiles */,
+				D99A52AE1A56A91000E633EA /* demograph.xml in CopyFiles */,
+				D99A52AF1A56A91000E633EA /* door.jpg in CopyFiles */,
+				D99A52B01A56A91000E633EA /* duff.png in CopyFiles */,
+				D99A52B11A56A91000E633EA /* floor.jpg in CopyFiles */,
+				D99A52B21A56A91000E633EA /* leaves.jpg in CopyFiles */,
+				D99A52B31A56A91000E633EA /* normal_wood.jpg in CopyFiles */,
+				D99A52B41A56A91000E633EA /* pirata.jpg in CopyFiles */,
+				D99A52B51A56A91000E633EA /* pyramid.jpg in CopyFiles */,
+				D99A52B61A56A91000E633EA /* ricky.anf in CopyFiles */,
+				D99A52B71A56A91000E633EA /* roof.jpg in CopyFiles */,
+				D99A52B81A56A91000E633EA /* scene.xml in CopyFiles */,
+				D99A52B91A56A91000E633EA /* sea.jpg in CopyFiles */,
+				D99A52BA1A56A91000E633EA /* texshader.frag in CopyFiles */,
+				D99A52BB1A56A91000E633EA /* texshader.vert in CopyFiles */,
+				D99A52BC1A56A91000E633EA /* trunk.jpg in CopyFiles */,
+				D99A52BD1A56A91000E633EA /* wall.jpg in CopyFiles */,
+				D99A52BE1A56A91000E633EA /* white_wood.jpg in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,26 +163,26 @@
 		AA63E22F16D4221C003287C6 /* libGLEW.1.9.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.1.9.0.dylib; path = /usr/local/Cellar/glew/1.9.0/lib/libGLEW.1.9.0.dylib; sourceTree = "<absolute>"; };
 		AA63E23016D4221C003287C6 /* libGLEWmx.1.9.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEWmx.1.9.0.dylib; path = /usr/local/Cellar/glew/1.9.0/lib/libGLEWmx.1.9.0.dylib; sourceTree = "<absolute>"; };
 		AA63E23116D4221C003287C6 /* libglui.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglui.a; path = /usr/local/Cellar/glui/2.36/lib/libglui.a; sourceTree = "<absolute>"; };
-		D93D38531A4F0082009AC8C8 /* black_wood.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = black_wood.jpg; sourceTree = "<group>"; };
-		D93D38541A4F0082009AC8C8 /* cena.anf */ = {isa = PBXFileReference; lastKnownFileType = text; path = cena.anf; sourceTree = "<group>"; };
-		D93D38551A4F0082009AC8C8 /* cena1.anf */ = {isa = PBXFileReference; lastKnownFileType = text; path = cena1.anf; sourceTree = "<group>"; };
-		D93D38561A4F0082009AC8C8 /* demograph.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = demograph.xml; sourceTree = "<group>"; };
-		D93D38571A4F0082009AC8C8 /* door.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = door.jpg; sourceTree = "<group>"; };
-		D93D38581A4F0082009AC8C8 /* duff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = duff.png; sourceTree = "<group>"; };
-		D93D38591A4F0082009AC8C8 /* floor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = floor.jpg; sourceTree = "<group>"; };
-		D93D385A1A4F0082009AC8C8 /* leaves.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = leaves.jpg; sourceTree = "<group>"; };
-		D93D385B1A4F0082009AC8C8 /* normal_wood.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = normal_wood.jpg; sourceTree = "<group>"; };
-		D93D385C1A4F0082009AC8C8 /* pirata.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pirata.jpg; sourceTree = "<group>"; };
-		D93D385D1A4F0082009AC8C8 /* pyramid.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pyramid.jpg; sourceTree = "<group>"; };
-		D93D385E1A4F0082009AC8C8 /* ricky.anf */ = {isa = PBXFileReference; lastKnownFileType = text; path = ricky.anf; sourceTree = "<group>"; };
-		D93D385F1A4F0082009AC8C8 /* roof.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = roof.jpg; sourceTree = "<group>"; };
-		D93D38601A4F0082009AC8C8 /* scene.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = scene.xml; sourceTree = "<group>"; };
-		D93D38611A4F0082009AC8C8 /* sea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sea.jpg; sourceTree = "<group>"; };
-		D93D38621A4F0082009AC8C8 /* texshader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = texshader.frag; sourceTree = "<group>"; };
-		D93D38631A4F0082009AC8C8 /* texshader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = texshader.vert; sourceTree = "<group>"; };
-		D93D38641A4F0082009AC8C8 /* trunk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = trunk.jpg; sourceTree = "<group>"; };
-		D93D38651A4F0082009AC8C8 /* wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wall.jpg; sourceTree = "<group>"; };
-		D93D38661A4F0082009AC8C8 /* white_wood.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = white_wood.jpg; sourceTree = "<group>"; };
+		D99A52971A56A8FD00E633EA /* black_wood.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = black_wood.jpg; sourceTree = "<group>"; };
+		D99A52981A56A8FD00E633EA /* cena.anf */ = {isa = PBXFileReference; lastKnownFileType = text; path = cena.anf; sourceTree = "<group>"; };
+		D99A52991A56A8FD00E633EA /* cena1.anf */ = {isa = PBXFileReference; lastKnownFileType = text; path = cena1.anf; sourceTree = "<group>"; };
+		D99A529A1A56A8FD00E633EA /* demograph.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = demograph.xml; sourceTree = "<group>"; };
+		D99A529B1A56A8FD00E633EA /* door.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = door.jpg; sourceTree = "<group>"; };
+		D99A529C1A56A8FD00E633EA /* duff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = duff.png; sourceTree = "<group>"; };
+		D99A529D1A56A8FD00E633EA /* floor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = floor.jpg; sourceTree = "<group>"; };
+		D99A529E1A56A8FD00E633EA /* leaves.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = leaves.jpg; sourceTree = "<group>"; };
+		D99A529F1A56A8FD00E633EA /* normal_wood.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = normal_wood.jpg; sourceTree = "<group>"; };
+		D99A52A01A56A8FD00E633EA /* pirata.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pirata.jpg; sourceTree = "<group>"; };
+		D99A52A11A56A8FD00E633EA /* pyramid.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pyramid.jpg; sourceTree = "<group>"; };
+		D99A52A21A56A8FD00E633EA /* ricky.anf */ = {isa = PBXFileReference; lastKnownFileType = text; path = ricky.anf; sourceTree = "<group>"; };
+		D99A52A31A56A8FD00E633EA /* roof.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = roof.jpg; sourceTree = "<group>"; };
+		D99A52A41A56A8FD00E633EA /* scene.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = scene.xml; sourceTree = "<group>"; };
+		D99A52A51A56A8FD00E633EA /* sea.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sea.jpg; sourceTree = "<group>"; };
+		D99A52A61A56A8FD00E633EA /* texshader.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = texshader.frag; sourceTree = "<group>"; };
+		D99A52A71A56A8FD00E633EA /* texshader.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = texshader.vert; sourceTree = "<group>"; };
+		D99A52A81A56A8FD00E633EA /* trunk.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = trunk.jpg; sourceTree = "<group>"; };
+		D99A52A91A56A8FD00E633EA /* wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wall.jpg; sourceTree = "<group>"; };
+		D99A52AA1A56A8FD00E633EA /* white_wood.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = white_wood.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,26 +315,26 @@
 		AA63E23916D422CA003287C6 /* data */ = {
 			isa = PBXGroup;
 			children = (
-				D93D38531A4F0082009AC8C8 /* black_wood.jpg */,
-				D93D38541A4F0082009AC8C8 /* cena.anf */,
-				D93D38551A4F0082009AC8C8 /* cena1.anf */,
-				D93D38561A4F0082009AC8C8 /* demograph.xml */,
-				D93D38571A4F0082009AC8C8 /* door.jpg */,
-				D93D38581A4F0082009AC8C8 /* duff.png */,
-				D93D38591A4F0082009AC8C8 /* floor.jpg */,
-				D93D385A1A4F0082009AC8C8 /* leaves.jpg */,
-				D93D385B1A4F0082009AC8C8 /* normal_wood.jpg */,
-				D93D385C1A4F0082009AC8C8 /* pirata.jpg */,
-				D93D385D1A4F0082009AC8C8 /* pyramid.jpg */,
-				D93D385E1A4F0082009AC8C8 /* ricky.anf */,
-				D93D385F1A4F0082009AC8C8 /* roof.jpg */,
-				D93D38601A4F0082009AC8C8 /* scene.xml */,
-				D93D38611A4F0082009AC8C8 /* sea.jpg */,
-				D93D38621A4F0082009AC8C8 /* texshader.frag */,
-				D93D38631A4F0082009AC8C8 /* texshader.vert */,
-				D93D38641A4F0082009AC8C8 /* trunk.jpg */,
-				D93D38651A4F0082009AC8C8 /* wall.jpg */,
-				D93D38661A4F0082009AC8C8 /* white_wood.jpg */,
+				D99A52971A56A8FD00E633EA /* black_wood.jpg */,
+				D99A52981A56A8FD00E633EA /* cena.anf */,
+				D99A52991A56A8FD00E633EA /* cena1.anf */,
+				D99A529A1A56A8FD00E633EA /* demograph.xml */,
+				D99A529B1A56A8FD00E633EA /* door.jpg */,
+				D99A529C1A56A8FD00E633EA /* duff.png */,
+				D99A529D1A56A8FD00E633EA /* floor.jpg */,
+				D99A529E1A56A8FD00E633EA /* leaves.jpg */,
+				D99A529F1A56A8FD00E633EA /* normal_wood.jpg */,
+				D99A52A01A56A8FD00E633EA /* pirata.jpg */,
+				D99A52A11A56A8FD00E633EA /* pyramid.jpg */,
+				D99A52A21A56A8FD00E633EA /* ricky.anf */,
+				D99A52A31A56A8FD00E633EA /* roof.jpg */,
+				D99A52A41A56A8FD00E633EA /* scene.xml */,
+				D99A52A51A56A8FD00E633EA /* sea.jpg */,
+				D99A52A61A56A8FD00E633EA /* texshader.frag */,
+				D99A52A71A56A8FD00E633EA /* texshader.vert */,
+				D99A52A81A56A8FD00E633EA /* trunk.jpg */,
+				D99A52A91A56A8FD00E633EA /* wall.jpg */,
+				D99A52AA1A56A8FD00E633EA /* white_wood.jpg */,
 			);
 			path = data;
 			sourceTree = "<group>";

@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "Primitives.h"
 #include <cstring>
+#include "Node.h"
 #include "Piece.h"
 #include <sstream>
 #include <string.h>
@@ -24,6 +25,7 @@ using namespace std;
 class Board : public Primitives{
 private:
     int sizex, sizey;
+    Node * node;
     
     Appearance * appearance_white = new Appearance();
     
@@ -36,19 +38,27 @@ private:
     std::string currentPlayer;
     
     bool carry;
+    bool hasAnimation;
+    int pieceToAnimate[2];
+    LinearAnimation * animation;
     
     
     std::vector<std::string> boardsHistory;
     
 public:
     Board(){
+        node = new Node(true);
         piece = new Piece();
-        appearance_white->setTexture("/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/white_wood.jpg");
-        appearance_black->setTexture("/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/black_wood.jpg");
+        node->addPrimitives(piece);
+        appearance_white->setTexture("../data/white_wood.jpg");
+        appearance_black->setTexture("../data/black_wood.jpg");
         this->loadFromString("[[p1,p1,p1,p1,b1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[a1,p1,p1,p1,p1]].");
         this->currentPlayer="a1";
         this->carry=false;
+        this->hasAnimation = false;
     }
+    
+    ControlPoint getOpenGlPosition(int x, int y);
     
     int getSizeX(){return this->sizex; }
     int getSizeY(){ return this->sizey; }
@@ -59,6 +69,8 @@ public:
     std::string getType() { return "board"; }
     void draw();
     
+    
+    void animate(int toX, int toY);
     
     std::string toString();
     void loadFromString(std::string board_string);

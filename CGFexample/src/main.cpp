@@ -19,7 +19,6 @@ int main(int argc, char* argv[]) {
         Scene * scene = new Scene();
 		app.setScene(scene);
         app.setInterface(new CGFinterface());
-        app.setInterface(new TPInterface(scene));
         app.setInterface(new PickInterface());
 		
 		app.run();

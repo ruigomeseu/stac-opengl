@@ -9,6 +9,7 @@ class PickScene : public CGFscene
 	friend PickInterface;
 public:
 	void init();
+    void initGUI();
 	void display();
 	~PickScene();
 private:

@@ -26,6 +26,33 @@ GLuint selectBuf[BUFSIZE];
 bool openedSocket = false;
 int sock_address;
 
+void PickInterface::initGUI(){
+    /** MAIN PANEL */
+    GLUI_Panel * panel=addPanel("Painel de Controlo");
+    
+    /** LIGHT PANEL ***/
+    GLUI_Panel *camerasPanel = addPanelToPanel(panel, "Camaras", 1);
+    addColumnToPanel(panel);
+    GLUI_Panel *lightsPanel = addPanelToPanel(panel, "Luzes");
+    addColumnToPanel(panel);
+    GLUI_Panel *representationPanel = addPanelToPanel(panel, "Representacao");
+    
+    GLUI_Listbox * camerasList = addListboxToPanel(camerasPanel, "Camaras", 0 , 1);
+    
+    GLUI_RadioGroup* representation = addRadioGroupToPanel(representationPanel, 0, 0);
+    
+    addRadioButtonToGroup(representation, "Fill");
+    addRadioButtonToGroup(representation, "Wired");
+    
+}
+
+
+void PickInterface::processGUI(GLUI_Control *ctrl){
+    
+    cout << "mr cout" << endl;
+}
+
+
 void PickInterface::processMouse(int button, int state, int x, int y) 
 {
 	CGFinterface::processMouse(button,state, x, y);
@@ -233,10 +260,11 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
         }
         
         if(strstr(newBoard.c_str(), "fail.")==NULL && strstr(newBoard.c_str(), "end_game.")==NULL){
-            ((Scene *) scene)->getGameBoard()->changePlayer();
+            ((Scene * ) scene)->getGameBoard()->animate(selected[0], selected[1]);
             ((Scene *) scene)->getGameBoard()->loadFromString(newBoard);
             // save new board to history of boards.
             ((Scene *) scene)->getGameBoard()->addBoardToHistory(((Scene *) scene)->getGameBoard()->toString());
+            ((Scene *) scene)->getGameBoard()->changePlayer();
             ((Scene *) scene)->getGameBoard()->setCarry(false);
         }
 	}

@@ -26,6 +26,13 @@ void Board::draw(){
         for(int j = 0; j< 5; j++){
             glPushMatrix();
             glTranslatef(5*i, 0, 5*j);
+            if(this->hasAnimation && i == pieceToAnimate[0] && j == pieceToAnimate[1])
+            {
+                this->animation->increment(30);
+                glTranslatef(this->animation->getCurrentAnimationPoint().getX(),
+                             this->animation->getCurrentAnimationPoint().getY(),
+                             this->animation->getCurrentAnimationPoint().getZ());
+            }
             glRotated(-90, 1,0,0);
             if(strcmp(board[i][j].c_str(), "vv")==0){
                 
@@ -48,22 +55,52 @@ void Board::draw(){
                 piece->setPiece("b1");
                 piece->draw();
             }else if(strcmp(board[i][j].c_str(), "a3") == 0){
-                piece->setPiece("a3");
+                piece->setPiece("p2");
+                piece->draw();
+                glTranslatef(0, 0, 1);
+                piece->setPiece("p1");
+                piece->draw();
+                glTranslatef(0, 0, 1);
+                piece->setPiece("a1");
                 piece->draw();
             }else if(strcmp(board[i][j].c_str(), "b3") == 0){
-                piece->setPiece("b3");
+                piece->setPiece("p2");
+                piece->draw();
+                glTranslatef(0, 0, 1);
+                piece->setPiece("p1");
+                piece->draw();
+                glTranslatef(0, 0, 1);
+                piece->setPiece("b1");
                 piece->draw();
             }else if(strcmp(board[i][j].c_str(), "a2") == 0){
-                piece->setPiece("a2");
+                piece->setPiece("p1");
+                piece->draw();
+                glTranslatef(0, 0, 1);
+                piece->setPiece("a1");
                 piece->draw();
             }else if(strcmp(board[i][j].c_str(), "b2") == 0){
-                piece->setPiece("b2");
+                piece->setPiece("p1");
+                piece->draw();
+                glTranslatef(0, 0, 1);
+                piece->setPiece("b1");
                 piece->draw();
             }else if(strcmp(board[i][j].c_str(), "a4") == 0){
-                piece->setPiece("a4");
+                piece->setPiece("p2");
+                piece->draw();
+                glTranslatef(0, 0, 1);
+                piece->setPiece("p2");
+                piece->draw();
+                glTranslatef(0, 0, 1);
+                piece->setPiece("a1");
                 piece->draw();
             }else if(strcmp(board[i][j].c_str(), "b4") == 0){
-                piece->setPiece("b4");
+                piece->setPiece("p2");
+                piece->draw();
+                glTranslatef(0, 0, 1);
+                piece->setPiece("p2");
+                piece->draw();
+                glTranslatef(0, 0, 1);
+                piece->setPiece("b1");
                 piece->draw();
             }
             glPopMatrix();
@@ -117,8 +154,6 @@ void Board::draw(){
     
 }
 
-
-
 std::string Board::toString(){
     std::string final_string;
     final_string.append("[");
@@ -136,6 +171,60 @@ std::string Board::toString(){
     final_string.append("]");
     return final_string;
 }
+
+void Board::animate(int toX, int toY)
+{
+    int positionX, positionY;
+    
+    // find player position
+    for(int i=0; i < 5; i++)
+    {
+        for (int j=0; j<5; j++)
+        {
+            if(board[i][j][0] == currentPlayer[0] && board[i][j][1] != 4)
+            {
+                positionX = i;
+                positionY = j;
+            }
+        }
+    }
+    
+    this->pieceToAnimate[0] = positionX;
+    this->pieceToAnimate[1] = positionY;
+    this->hasAnimation = true;
+    
+    this->animation = new LinearAnimation("animation", 3);
+    
+    ControlPoint initialPoint = this->getOpenGlPosition(positionX, positionY);
+    ControlPoint finalPoint = this->getOpenGlPosition(toX, toY);
+    ControlPoint initialPointHeight = ControlPoint(initialPoint.getX(), initialPoint.getY() + 10, initialPoint.getZ());
+    
+    ControlPoint finalPointHeight = ControlPoint(finalPoint.getX(), finalPoint.getY() + 10, finalPoint.getZ());
+    
+    this->animation->addControlPoint(initialPoint);
+    this->animation->addControlPoint(initialPointHeight);
+    
+    this->animation->addControlPoint(finalPointHeight);
+    this->animation->addControlPoint(finalPoint);
+    
+    this->animation->calculateTotalDistance();
+    
+    cout << positionX << endl;
+    cout << positionY << endl;
+}
+                                     
+ControlPoint Board::getOpenGlPosition(int x, int y)
+{
+    float posX = 2.5 + 5*x;
+    
+    float posY = 0;
+    
+    float posZ = 2.5 + 5*y;
+    
+    return ControlPoint(posX, posY, posZ);
+}
+                                     
+                                     
 
 void Board::loadFromString(std::string board_string)
 {

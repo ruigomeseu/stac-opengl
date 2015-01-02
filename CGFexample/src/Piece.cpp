@@ -39,7 +39,7 @@ void Piece::draw(){
     }else if(strcmp(piece.c_str(), "b1") == 0){
         appearance_black->apply();
         cylinder->draw();
-    }else if(strcmp(piece.c_str(), "a2") == 0){
+    }/*else if(strcmp(piece.c_str(), "a2") == 0){
         cylinder->draw();
         glTranslatef(0, 0, 1);
         appearance_white->apply();
@@ -89,7 +89,7 @@ void Piece::draw(){
         glTranslatef(0, 0, 1);
         appearance_black->apply();
         cylinder->draw();
-    }
+    }*/
     
     glPopMatrix();
     

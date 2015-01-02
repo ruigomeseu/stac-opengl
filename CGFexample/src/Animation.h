@@ -88,6 +88,12 @@ public:
         initialized = false;
         this->drawnThisFrame = true;
         this->finished = false;
+        this->currentAnimationPoint = ControlPoint(0,0,0);
+    }
+    
+    ControlPoint getLastAnimationPoint()
+    {
+        return controlPoints[currentPoint];
     }
     
     ControlPoint getCurrentAnimationPoint()
@@ -132,48 +138,17 @@ public:
         
         if(currentPoint + 1 < controlPoints.size())
         {
-            float surfaceTriangleX = abs( controlPoints[currentPoint].getX() - controlPoints[currentPoint+1].getX());
+            float distanceToWalkX = (t * (controlPoints[currentPoint+1].getX() - controlPoints[currentPoint].getX()))/1000;
+        
+            float distanceToWalkY = (t * (controlPoints[currentPoint+1].getY() - controlPoints[currentPoint].getY()))/1000;
             
-            float surfaceTriangleZ = abs( controlPoints[currentPoint].getZ() - controlPoints[currentPoint+1].getZ());
-            
-            float surfaceAngle;
-            if(surfaceTriangleX != 0) {
-                surfaceAngle = atan(surfaceTriangleZ / surfaceTriangleX);
-            } else {
-                //surfaceAngle = 0;
-                surfaceAngle = atan(surfaceTriangleZ / controlPoints[currentPoint].getX());
-            }
-            
-            float heightTriangleY = abs( controlPoints[currentPoint].getY() - controlPoints[currentPoint+1].getY());
-            
-            float surfaceTriangleHypotenuse = sqrt( pow(surfaceTriangleX, 2) + pow(surfaceTriangleZ, 2) );
-            
-            float heightTriangleAngle = atan(heightTriangleY / surfaceTriangleHypotenuse);
-            
-            float distanceToWalkY = sin(heightTriangleAngle) * distanceToWalk;
-            
-            float partialSurfaceTriangleHypotenuse = cos(heightTriangleAngle) * distanceToWalk;
-            
-            float distanceToWalkX = cos(surfaceAngle) * partialSurfaceTriangleHypotenuse;
-            float distanceToWalkZ;
-            
-            distanceToWalkZ = sin(surfaceAngle) * partialSurfaceTriangleHypotenuse;
-           
-            std::cout << "angle = " << surfaceAngle<<std::endl;
-            std::cout << "distance X = " << distanceToWalkX<<std::endl;
-            std::cout << "distance Z = " << distanceToWalkZ<<std::endl;
-            
+            float distanceToWalkZ = (t * (controlPoints[currentPoint+1].getZ() - controlPoints[currentPoint].getZ()))/1000;
             
             sumDistanceWalked += distanceToWalk;
             
-            if(controlPoints[currentPoint].getX() > controlPoints[currentPoint+1].getX())
-                distanceToWalkX = -distanceToWalkX;
-            
-            if(controlPoints[currentPoint].getY() > controlPoints[currentPoint+1].getY())
-                distanceToWalkY = -distanceToWalkY;
-            
-            if(controlPoints[currentPoint].getZ() > controlPoints[currentPoint+1].getZ())
-                distanceToWalkZ = -distanceToWalkZ;
+            distanceToWalkX += currentAnimationPoint.getX();
+            distanceToWalkY += currentAnimationPoint.getY();
+            distanceToWalkZ += currentAnimationPoint.getZ();
             
             ControlPoint pointToAnimate(distanceToWalkX, distanceToWalkY, distanceToWalkZ);
             std::cout << "calculated point2" << std::endl;
@@ -189,6 +164,7 @@ public:
             if(sumDistanceWalked > distanceBetweenPoints(controlPoints[currentPoint], controlPoints[currentPoint+1])) {
                 std::cout << "Animation point increased" << std::endl;
                 sumDistanceWalked = 0;
+                
                 currentPoint++;
                 if(currentPoint == controlPoints.size() - 1)
                 {

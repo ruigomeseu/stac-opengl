@@ -23,9 +23,9 @@ private:
     
 public:
     Piece(){
-        appearance_white->setTexture("/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/white_wood.jpg");
-        appearance_black->setTexture("/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/black_wood.jpg");
-        appearance_normal->setTexture("/Users/josemiguelmelo/Documents/FEUP/3o Ano/LAIG/Game/CGFexample/data/normal_wood.jpg");
+        appearance_white->setTexture("../data/white_wood.jpg");
+        appearance_black->setTexture("../data/black_wood.jpg");
+        appearance_normal->setTexture("../data/normal_wood.jpg");
         
     }
     std::string getType() { return "piece"; }
