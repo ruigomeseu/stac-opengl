@@ -4,6 +4,9 @@
 #include "CGFinterface.h"
 
 class PickInterface: public CGFinterface {
+private:
+    int undo_id;
+    
 	public:
         virtual void processKeyboard(unsigned char key, int x, int y);
 		virtual void processMouse(int button, int state, int x, int y);

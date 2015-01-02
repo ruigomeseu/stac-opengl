@@ -43,7 +43,7 @@ private:
     LinearAnimation * animation;
     
     
-    std::vector<std::string> boardsHistory;
+    std::vector<std::string> * boardsHistory;
     
 public:
     Board(){
@@ -56,6 +56,10 @@ public:
         this->currentPlayer="a1";
         this->carry=false;
         this->hasAnimation = false;
+        boardsHistory = new std::vector<std::string> ();
+        
+        boardsHistory->push_back(this->toString());
+        
     }
     
     bool getHasAnimation(){
@@ -86,7 +90,8 @@ public:
         this->loadFromString("[[p1,p1,p1,p1,b1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[a1,p1,p1,p1,p1]].");
         this->currentPlayer="a1";
         this->carry=false;
-        this->boardsHistory.clear();
+        this->boardsHistory->clear();
+        this->boardsHistory->push_back(toString());
     }
     
     std::string getCurrentPlayer(){
@@ -116,12 +121,12 @@ public:
     
     
     
-    std::vector<std::string> getBoardsHistory(){
+    std::vector<std::string> * getBoardsHistory(){
         return this->boardsHistory;
     }
     
     void addBoardToHistory(std::string board){
-        boardsHistory.push_back(board);
+        boardsHistory->push_back(board);
     }
     
 

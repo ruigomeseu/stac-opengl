@@ -15,7 +15,7 @@ void Board::animateIfExists(int i, int j, int pieceToAnimate[2])
         if(this->animation->getFinished()){
             cout << "animation ended" << endl;
             this->hasAnimation = false;
-            loadFromString(boardsHistory.at(boardsHistory.size()-1));
+            loadFromString(boardsHistory->at(boardsHistory->size()-1));
             setCarry(false);
         }
         

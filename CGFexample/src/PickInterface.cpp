@@ -41,6 +41,8 @@ void PickInterface::initGUI(){
     
     GLUI_RadioGroup* representation = addRadioGroupToPanel(representationPanel, 0, 0);
     
+    addButton("Undo", 1);
+    
     addRadioButtonToGroup(representation, "Fill");
     addRadioButtonToGroup(representation, "Wired");
     
@@ -48,8 +50,21 @@ void PickInterface::initGUI(){
 
 
 void PickInterface::processGUI(GLUI_Control *ctrl){
-    
-    cout << "mr cout" << endl;
+    switch(ctrl->get_id()){
+        case 1:
+            std::vector<std::string> * boards = ((Scene * ) scene)->getGameBoard()->getBoardsHistory();
+            if(boards->size()==1)
+                return;
+            boards->pop_back();
+            
+            std::string board = boards->at(boards->size()-1);
+            
+            ((Scene * ) scene)->getGameBoard()->loadFromString(board);
+            ((Scene * ) scene)->getGameBoard()->changePlayer();
+            ((Scene * ) scene)->getGameBoard()->setCarry(false);
+            
+            break;
+    }
 }
 
 
