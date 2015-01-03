@@ -166,7 +166,40 @@
 			</primitives>
 
 			<descendants>
-				<noderef id="board" />
+				<noderef id="board"/>
+				<noderef id="first_scene" />
+				<noderef id="second_scene" />
+			</descendants>
+		</node>
+
+
+		<node id="first_scene" displaylist="false" active="true">
+			<transforms>
+				<transform type="translate" to="-4 0 2" />
+			</transforms>
+
+			<appearanceref id="court" />
+
+			<primitives>
+				<rectangle xy1="0 0" xy2="2 2"/>
+			</primitives>
+
+			<descendants>
+			</descendants>
+		</node>
+		
+
+		<node id="second_scene" displaylist="false" active="false">
+			<transforms>
+			</transforms>
+
+			<appearanceref id="court" />
+
+			<primitives>
+
+			</primitives>
+
+			<descendants>
 			</descendants>
 		</node>
 

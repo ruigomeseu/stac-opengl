@@ -276,6 +276,19 @@ void ANFInterpreter::loadGraph(){
             node->setDisplayList(false);
         }
         
+        if(nodeElements->Attribute("active"))
+        {
+            std::string active = nodeElements->Attribute("active");
+            if(active == "true")
+            {
+                node->setActive(true);
+            } else {
+                node->setActive(false);
+            }
+        } else {
+            node->setActive(true);
+        }
+        
         node->setAppearanceRef(appearanceElement->Attribute("id"));
         cout << "appearance ref = " << appearanceElement->Attribute("id");
         if(strcmp(appearanceElement->Attribute("id"), "inherit")!=0){

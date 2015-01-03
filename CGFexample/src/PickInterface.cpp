@@ -103,30 +103,56 @@ void sendMessageSocket(int socket, std::string message){
 
 void PickInterface::initGUI(){
     /** MAIN PANEL */
-    GLUI_Panel * panel=addPanel("Painel de Controlo");
+    GLUI_Panel * panel=addPanel("Control Panel");
     
     /** LIGHT PANEL ***/
-    GLUI_Panel *camerasPanel = addPanelToPanel(panel, "Camaras", 1);
+    GLUI_Panel *scenarioPanel = addPanelToPanel(panel, "Scenario", 1);
     addColumnToPanel(panel);
-    GLUI_Panel *lightsPanel = addPanelToPanel(panel, "Luzes");
-    addColumnToPanel(panel);
-    GLUI_Panel *representationPanel = addPanelToPanel(panel, "Representacao");
     
-    GLUI_Listbox * camerasList = addListboxToPanel(camerasPanel, "Camaras", 0 , 1);
+    GLUI_Listbox * scenarioList = addListboxToPanel(scenarioPanel, "Scenario", &scenariovar , 1);
     
-    GLUI_RadioGroup* representation = addRadioGroupToPanel(representationPanel, 0, 0);
     
     addButton("Undo", 1);
     addButton("Movie", 2);
     
-    addRadioButtonToGroup(representation, "Fill");
-    addRadioButtonToGroup(representation, "Wired");
+    
+    
+    
+    std::map<std::string, Node *> * nodes = ((Scene*) scene)->getGraph()->getNodes();
+    
+    Node * rootNode = nodes->at( ((Scene*) scene)->getGraph()->getRootId() );
+    
+    std::map<std::string, Node *> * descendants = rootNode->getDescendants();
+    
+    map<std::string,Node*>::iterator descendant = descendants->begin();
+    for(int j= 0; j < descendants->size(); j++,descendant++){
+        if (descendant->second->getID() != "board"){
+            scenarioList->add_item(j, descendant->second->getID().c_str());
+            scenarioVars.push_back(descendant->second->getID());
+            
+            if(descendant->second->isActive()){
+                scenarioList->set_int_val(j);
+                currentScenario =descendant->second->getID();
+            }
+        }
+    }
     
 }
 
 
 
 void PickInterface::processGUI(GLUI_Control *ctrl){
+    /** Scenarios HANDLE **/
+    Node * node1 = ((Scene*)scene)->getGraph()->getNodes()->at(currentScenario);
+    node1->setActive(false);
+    cout << "var = " << scenariovar<< ", " << scenarioVars.at(scenariovar-1) <<endl;
+    Node * node = ((Scene*)scene)->getGraph()->getNodes()->at(scenarioVars.at(scenariovar-1));
+    node->setActive(true);
+    currentScenario =scenarioVars.at(scenariovar-1);
+    
+    //scene->setActiveCamera(camerasVector->at(camerasVar));
+    
+    
     switch(ctrl->get_id()){
         case 1:{
             std::vector<std::string> * boards = ((Scene * ) scene)->getGameBoard()->getBoardsHistory();

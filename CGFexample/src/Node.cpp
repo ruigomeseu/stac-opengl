@@ -1,6 +1,7 @@
 #include "Node.h"
 
 void Node::draw(GLfloat previousMatrix[4][4]){
+    if(active){
     glLoadIdentity();
     glMultMatrixf(*previousMatrix);
     glMultMatrixf(*this->matrix);
@@ -26,11 +27,12 @@ void Node::draw(GLfloat previousMatrix[4][4]){
             descendant->second->draw(multipliedMatrix, appearance);
         }
     }
-    
+    }
 }
 
 
 void Node::draw(GLfloat previousMatrix[4][4], Appearance * previousAppearance){
+    if(active){
     if(strcmp(apperanceref.c_str(), "inherit")==0){
         appearance = previousAppearance;
     }
@@ -65,6 +67,7 @@ void Node::draw(GLfloat previousMatrix[4][4], Appearance * previousAppearance){
             appearance->apply();
             descendant->second->draw(multipliedMatrix, appearance);
         }
+    }
     }
     
 }

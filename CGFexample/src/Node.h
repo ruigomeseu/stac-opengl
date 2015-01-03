@@ -28,6 +28,7 @@ private:
     vector<Animation *> animations;
     int currentAnimation;
     
+    bool active;
 public:
     
     Node(bool initialized) {
@@ -38,6 +39,15 @@ public:
         this->displayList = false;
         currentAnimation = 0;
     }
+    
+    bool isActive(){
+        return this->active;
+    }
+    
+    void setActive(bool active){
+        this->active = active;
+    }
+    
     
     bool getHasAnimation() {
         return (
