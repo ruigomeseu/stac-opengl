@@ -57,7 +57,10 @@ void PickInterface::processGUI(GLUI_Control *ctrl){
                 return;
             boards->pop_back();
             
+            
             std::string board = boards->at(boards->size()-1);
+            
+            ((Scene * ) scene)->getGameBoard()->removeLastMoveFromHistory();
             
             ((Scene * ) scene)->getGameBoard()->loadFromString(board);
             ((Scene * ) scene)->getGameBoard()->changePlayer();
@@ -279,8 +282,9 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
         
         if(strstr(newBoard.c_str(), "fail.")==NULL && strstr(newBoard.c_str(), "end_game.")==NULL){
             ((Scene * ) scene)->getGameBoard()->animate(selected[0], selected[1]);
-           // ((Scene *) scene)->getGameBoard()->loadFromString(newBoard);
+            // ((Scene *) scene)->getGameBoard()->loadFromString(newBoard);
             // save new board to history of boards.
+            ((Scene *) scene)->getGameBoard()->addMoveToHistory(selected[0], selected[1]);
             ((Scene *) scene)->getGameBoard()->addBoardToHistory(newBoard);
             ((Scene *) scene)->getGameBoard()->changePlayer();
         }

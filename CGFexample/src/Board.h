@@ -33,6 +33,7 @@ private:
     Piece * piece;
     std::string board[5][5];
     
+    std::vector<std::pair<int, int> > movesHistory;
     
     // current player
     std::string currentPlayer;
@@ -60,6 +61,17 @@ public:
         
         boardsHistory->push_back(this->toString());
         
+    }
+    
+    void addMoveToHistory(int toX, int toY)
+    {
+        pair<int, int> p1 = {toX, toY};
+        this->movesHistory.push_back(p1);
+    }
+    
+    void removeLastMoveFromHistory()
+    {
+        this->movesHistory.pop_back();
     }
     
     bool getHasAnimation(){

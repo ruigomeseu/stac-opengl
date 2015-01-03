@@ -21,7 +21,7 @@ void Piece::draw(){
     
     appearance_normal->apply();
     
-    if(strcmp(piece.c_str(), "p1") ==0){
+    if(strcmp(piece.c_str(), "p1") ==0) {
         cylinder->draw();
     }else if(strcmp(piece.c_str(), "p2") == 0){
         cylinder->draw();
