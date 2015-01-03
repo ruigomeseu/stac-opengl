@@ -10,6 +10,16 @@ using std::cout;
 using std::exception;
 
 
+
+/*****
+ 
+ -> medicao do tempo
+ -> marcador
+ -> ambientes
+ -> modelacao pecas
+ 
+ ***/
+
 int main(int argc, char* argv[]) {
 
 	CGFapplication app = CGFapplication();
