@@ -28,6 +28,63 @@ void Board::animateIfExists(int i, int j, int pieceToAnimate[2])
     }
 }
 
+
+
+std::vector<Position> Board::calculatePossibleMoves(){
+    int positionX, positionY;
+    std::vector<Position> moves;
+    
+    // find player position
+    for(int i=0; i < 5; i++)
+    {
+        for (int j=0; j<5; j++)
+        {
+            if(board[i][j][0] == currentPlayer[0] && board[i][j][1] != 4)
+            {
+                positionX = i;
+                positionY = j;
+            }
+        }
+    }
+
+    std::string otherPlayer ;
+    if(strcmp(currentPlayer.c_str(), "a1") == 0){
+        otherPlayer="b1";
+    }else{
+        otherPlayer="a1";
+    }
+    
+    
+    if(carry)
+    {
+        if( board[positionX][positionY][1] == '2' || board[positionX][positionY][1] == '3' )
+        {
+            return moves;
+        }
+        
+    }
+    
+
+    for( unsigned int i =0 ; i < 5; i++){
+        if( board[positionX][i][0] != otherPlayer[0] && board[positionX][i][0] != currentPlayer[0] && i != positionY )
+        {
+            moves.push_back(Position(positionX, i));
+        }
+    }
+    
+    for( unsigned int i =0 ; i < 5; i++){
+        if( board[i][positionY][0] != otherPlayer[0] && board[i][positionY][0] != currentPlayer[0] && i != positionX )
+        {
+            moves.push_back(Position(i, positionY));
+        }
+    }
+    
+    return moves;
+    
+    
+    
+}
+
 void Board::draw(){
     
     Rectangle * square = new Rectangle();
@@ -177,6 +234,11 @@ void Board::draw(){
     
     glPopMatrix();
     
+    
+    
+    
+    std::vector<Position> moves = calculatePossibleMoves();
+    
     glPushName(-1);
     glPushMatrix();
     // example 2: structured naming
@@ -192,20 +254,40 @@ void Board::draw(){
             glTranslatef(0,0,(c+1)*5);
             glRotatef(-90,1,0,0);
             glPushName(c);
+            
+            Position position(r,c);
+            
             if((r%2) == 0)
             {
                 if((c%2)==0)
                 {
-                    appearance_black->apply();
+                    if(position.isInVector(moves)){
+                        appearance_black_bright->apply();
+                    }else{
+                        appearance_black->apply();
+                    }
                 } else {
-                    appearance_white->apply();
+                    if(position.isInVector(moves)){
+                        appearance_white_bright->apply();
+                    }else{
+                        appearance_white->apply();
+                    }
                 }
             } else {
                 if((c%2)==0)
                 {
-                    appearance_white->apply();
+                    if(position.isInVector(moves)){
+                        appearance_white_bright->apply();
+                    }else{
+                        appearance_white->apply();
+                    }
+                    
                 } else {
-                    appearance_black->apply();
+                    if(position.isInVector(moves)){
+                        appearance_black_bright->apply();
+                    }else{
+                        appearance_black->apply();
+                    }
                 }
             }
             square->draw();
@@ -219,6 +301,7 @@ void Board::draw(){
     
     
 }
+
 
 std::string Board::toString(){
     std::string final_string;
@@ -274,8 +357,8 @@ void Board::animate(int toX, int toY)
     
     this->animation->calculateTotalDistance();
     
-    cout << positionX << endl;
-    cout << positionY << endl;
+    cout << positionX << " to " << toX << endl;
+    cout << positionY << " to " << toY << endl;
 }
                                      
 ControlPoint Board::getOpenGlPosition(int x, int y)
@@ -307,6 +390,8 @@ void Board::loadFromString(std::string board_string)
     while(it != it_end) {
         std::smatch match = *it;
         std::string match_str = match.str();
+        
+        cout << match_str << endl;
         
         board[pieceNumber/5][pieceNumber%5] = match_str;
         

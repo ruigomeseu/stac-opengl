@@ -2,6 +2,7 @@
 #define PickInterface_H
 
 #include "CGFinterface.h"
+#include "Scene.h"
 
 class PickInterface: public CGFinterface {
 private:
@@ -10,6 +11,8 @@ private:
     
     std::vector<std::string> scenarioVars;
     std::string currentScenario;
+    
+    std::string currentPlayer = "a1";
 	public:
         virtual void processKeyboard(unsigned char key, int x, int y);
 		virtual void processMouse(int button, int state, int x, int y);

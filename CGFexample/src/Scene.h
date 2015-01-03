@@ -64,6 +64,44 @@ public:
     }
     
     
+    
+    bool isMovie;
+    
+    /*
+    void movie(int step,
+               std::vector< int > moves_X_History,
+               std::vector< int > moves_Y_History,
+               std::vector< std::string > carryHistory){
+        
+        
+        std::vector<std::string> * boardsHistory  =  new std::vector<std::string>();
+        std::vector<std::string> * board_aux  =getGameBoard()->getBoardsHistory();
+        for (unsigned int i = 0; i < board_aux->size() ; i++ ){
+            boardsHistory->push_back(board_aux->at(i));
+        }
+        
+        cout << "boards history size beforee = " << boardsHistory->size()<<endl;
+        
+        getGameBoard()->resetBoard();
+        
+        cout << "boards history size after = " << boardsHistory->size()<<endl;
+        
+        
+        getGameBoard()->animate(moves_X_History.at(i-1), moves_Y_History.at(i-1));
+            
+        getGameBoard()->addBoardToHistory(boardsHistory->at(i));
+            
+        getGameBoard()->changePlayer();
+        
+        
+        getGameBoard()->setBoardHistory(boardsHistory);
+        
+        // this should be replaced by code handling the picked object's ID's (stored in "selected"),
+        // possibly invoking a method on the scene class and passing "selected" and "nselected"
+    }
+    */
+
+    
 private:
     CGFlight* light0;
 	CGFobject* obj;

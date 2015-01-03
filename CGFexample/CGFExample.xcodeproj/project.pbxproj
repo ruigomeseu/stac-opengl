@@ -19,6 +19,30 @@
 		885659EB19E41744002328BF /* Transforms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 885659E919E41744002328BF /* Transforms.cpp */; };
 		885659EE19E41919002328BF /* Primitives.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 885659EC19E41919002328BF /* Primitives.cpp */; };
 		885659F119E42294002328BF /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 885659EF19E42294002328BF /* Node.cpp */; };
+		8856F6421A585C2600470C83 /* black_wood_bright.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8856F6401A585B9A00470C83 /* black_wood_bright.jpg */; };
+		8856F6431A585C2600470C83 /* black_wood.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52971A56A8FD00E633EA /* black_wood.jpg */; };
+		8856F6441A585C2600470C83 /* cena.anf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52981A56A8FD00E633EA /* cena.anf */; };
+		8856F6451A585C2600470C83 /* cena1.anf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52991A56A8FD00E633EA /* cena1.anf */; };
+		8856F6461A585C2600470C83 /* demograph.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A529A1A56A8FD00E633EA /* demograph.xml */; };
+		8856F6471A585C2600470C83 /* door.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A529B1A56A8FD00E633EA /* door.jpg */; };
+		8856F6481A585C2600470C83 /* duff.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A529C1A56A8FD00E633EA /* duff.png */; };
+		8856F6491A585C2600470C83 /* floor.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A529D1A56A8FD00E633EA /* floor.jpg */; };
+		8856F64A1A585C2600470C83 /* leaves.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A529E1A56A8FD00E633EA /* leaves.jpg */; };
+		8856F64B1A585C2600470C83 /* normal_wood.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A529F1A56A8FD00E633EA /* normal_wood.jpg */; };
+		8856F64C1A585C2600470C83 /* pirata.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A01A56A8FD00E633EA /* pirata.jpg */; };
+		8856F64D1A585C2600470C83 /* pyramid.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A11A56A8FD00E633EA /* pyramid.jpg */; };
+		8856F64E1A585C2600470C83 /* ricky.anf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A21A56A8FD00E633EA /* ricky.anf */; };
+		8856F64F1A585C2600470C83 /* roof.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A31A56A8FD00E633EA /* roof.jpg */; };
+		8856F6501A585C2600470C83 /* scene.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A41A56A8FD00E633EA /* scene.xml */; };
+		8856F6511A585C2600470C83 /* sea.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A51A56A8FD00E633EA /* sea.jpg */; };
+		8856F6521A585C2600470C83 /* texshader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A61A56A8FD00E633EA /* texshader.frag */; };
+		8856F6531A585C2600470C83 /* texshader.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A71A56A8FD00E633EA /* texshader.vert */; };
+		8856F6541A585C2600470C83 /* trunk.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A81A56A8FD00E633EA /* trunk.jpg */; };
+		8856F6551A585C2600470C83 /* wall.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A91A56A8FD00E633EA /* wall.jpg */; };
+		8856F6561A585C2600470C83 /* white_wood.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52AA1A56A8FD00E633EA /* white_wood.jpg */; };
+		8856F6581A585C8400470C83 /* black_wood_bright.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8856F6571A585C7700470C83 /* black_wood_bright.png */; };
+		8856F65D1A585DB600470C83 /* white_wood_bright.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8856F65C1A585DA900470C83 /* white_wood_bright.png */; };
+		8856F6601A58610700470C83 /* Position.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8856F65E1A58610700470C83 /* Position.cpp */; };
 		88586FAB19EC5D1B00D2AB72 /* libglui.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA63E23116D4221C003287C6 /* libglui.a */; };
 		88586FAE19EC5D3300D2AB72 /* libGLEW.1.11.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 88586FAC19EC5D3300D2AB72 /* libGLEW.1.11.0.dylib */; };
 		88586FAF19EC5D3300D2AB72 /* libGLEWmx.1.11.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 88586FAD19EC5D3300D2AB72 /* libGLEWmx.1.11.0.dylib */; };
@@ -37,26 +61,6 @@
 		AA63E1CF16D415BF003287C6 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA63E1CE16D415BF003287C6 /* OpenGL.framework */; };
 		AA63E1D316D415CB003287C6 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA63E1D216D415CB003287C6 /* GLUT.framework */; };
 		AA63E22E16D421B5003287C6 /* libCGF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA63E22D16D421B5003287C6 /* libCGF.a */; };
-		D99A52AB1A56A91000E633EA /* black_wood.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52971A56A8FD00E633EA /* black_wood.jpg */; };
-		D99A52AC1A56A91000E633EA /* cena.anf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52981A56A8FD00E633EA /* cena.anf */; };
-		D99A52AD1A56A91000E633EA /* cena1.anf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52991A56A8FD00E633EA /* cena1.anf */; };
-		D99A52AE1A56A91000E633EA /* demograph.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A529A1A56A8FD00E633EA /* demograph.xml */; };
-		D99A52AF1A56A91000E633EA /* door.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A529B1A56A8FD00E633EA /* door.jpg */; };
-		D99A52B01A56A91000E633EA /* duff.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A529C1A56A8FD00E633EA /* duff.png */; };
-		D99A52B11A56A91000E633EA /* floor.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A529D1A56A8FD00E633EA /* floor.jpg */; };
-		D99A52B21A56A91000E633EA /* leaves.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A529E1A56A8FD00E633EA /* leaves.jpg */; };
-		D99A52B31A56A91000E633EA /* normal_wood.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A529F1A56A8FD00E633EA /* normal_wood.jpg */; };
-		D99A52B41A56A91000E633EA /* pirata.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A01A56A8FD00E633EA /* pirata.jpg */; };
-		D99A52B51A56A91000E633EA /* pyramid.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A11A56A8FD00E633EA /* pyramid.jpg */; };
-		D99A52B61A56A91000E633EA /* ricky.anf in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A21A56A8FD00E633EA /* ricky.anf */; };
-		D99A52B71A56A91000E633EA /* roof.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A31A56A8FD00E633EA /* roof.jpg */; };
-		D99A52B81A56A91000E633EA /* scene.xml in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A41A56A8FD00E633EA /* scene.xml */; };
-		D99A52B91A56A91000E633EA /* sea.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A51A56A8FD00E633EA /* sea.jpg */; };
-		D99A52BA1A56A91000E633EA /* texshader.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A61A56A8FD00E633EA /* texshader.frag */; };
-		D99A52BB1A56A91000E633EA /* texshader.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A71A56A8FD00E633EA /* texshader.vert */; };
-		D99A52BC1A56A91000E633EA /* trunk.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A81A56A8FD00E633EA /* trunk.jpg */; };
-		D99A52BD1A56A91000E633EA /* wall.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52A91A56A8FD00E633EA /* wall.jpg */; };
-		D99A52BE1A56A91000E633EA /* white_wood.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = D99A52AA1A56A8FD00E633EA /* white_wood.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,26 +70,29 @@
 			dstPath = ../data;
 			dstSubfolderSpec = 16;
 			files = (
-				D99A52AB1A56A91000E633EA /* black_wood.jpg in CopyFiles */,
-				D99A52AC1A56A91000E633EA /* cena.anf in CopyFiles */,
-				D99A52AD1A56A91000E633EA /* cena1.anf in CopyFiles */,
-				D99A52AE1A56A91000E633EA /* demograph.xml in CopyFiles */,
-				D99A52AF1A56A91000E633EA /* door.jpg in CopyFiles */,
-				D99A52B01A56A91000E633EA /* duff.png in CopyFiles */,
-				D99A52B11A56A91000E633EA /* floor.jpg in CopyFiles */,
-				D99A52B21A56A91000E633EA /* leaves.jpg in CopyFiles */,
-				D99A52B31A56A91000E633EA /* normal_wood.jpg in CopyFiles */,
-				D99A52B41A56A91000E633EA /* pirata.jpg in CopyFiles */,
-				D99A52B51A56A91000E633EA /* pyramid.jpg in CopyFiles */,
-				D99A52B61A56A91000E633EA /* ricky.anf in CopyFiles */,
-				D99A52B71A56A91000E633EA /* roof.jpg in CopyFiles */,
-				D99A52B81A56A91000E633EA /* scene.xml in CopyFiles */,
-				D99A52B91A56A91000E633EA /* sea.jpg in CopyFiles */,
-				D99A52BA1A56A91000E633EA /* texshader.frag in CopyFiles */,
-				D99A52BB1A56A91000E633EA /* texshader.vert in CopyFiles */,
-				D99A52BC1A56A91000E633EA /* trunk.jpg in CopyFiles */,
-				D99A52BD1A56A91000E633EA /* wall.jpg in CopyFiles */,
-				D99A52BE1A56A91000E633EA /* white_wood.jpg in CopyFiles */,
+				8856F65D1A585DB600470C83 /* white_wood_bright.png in CopyFiles */,
+				8856F6581A585C8400470C83 /* black_wood_bright.png in CopyFiles */,
+				8856F6421A585C2600470C83 /* black_wood_bright.jpg in CopyFiles */,
+				8856F6431A585C2600470C83 /* black_wood.jpg in CopyFiles */,
+				8856F6441A585C2600470C83 /* cena.anf in CopyFiles */,
+				8856F6451A585C2600470C83 /* cena1.anf in CopyFiles */,
+				8856F6461A585C2600470C83 /* demograph.xml in CopyFiles */,
+				8856F6471A585C2600470C83 /* door.jpg in CopyFiles */,
+				8856F6481A585C2600470C83 /* duff.png in CopyFiles */,
+				8856F6491A585C2600470C83 /* floor.jpg in CopyFiles */,
+				8856F64A1A585C2600470C83 /* leaves.jpg in CopyFiles */,
+				8856F64B1A585C2600470C83 /* normal_wood.jpg in CopyFiles */,
+				8856F64C1A585C2600470C83 /* pirata.jpg in CopyFiles */,
+				8856F64D1A585C2600470C83 /* pyramid.jpg in CopyFiles */,
+				8856F64E1A585C2600470C83 /* ricky.anf in CopyFiles */,
+				8856F64F1A585C2600470C83 /* roof.jpg in CopyFiles */,
+				8856F6501A585C2600470C83 /* scene.xml in CopyFiles */,
+				8856F6511A585C2600470C83 /* sea.jpg in CopyFiles */,
+				8856F6521A585C2600470C83 /* texshader.frag in CopyFiles */,
+				8856F6531A585C2600470C83 /* texshader.vert in CopyFiles */,
+				8856F6541A585C2600470C83 /* trunk.jpg in CopyFiles */,
+				8856F6551A585C2600470C83 /* wall.jpg in CopyFiles */,
+				8856F6561A585C2600470C83 /* white_wood.jpg in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,6 +123,11 @@
 		885659ED19E41919002328BF /* Primitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Primitives.h; path = src/Primitives.h; sourceTree = SOURCE_ROOT; };
 		885659EF19E42294002328BF /* Node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Node.cpp; path = src/Node.cpp; sourceTree = SOURCE_ROOT; };
 		885659F019E42294002328BF /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Node.h; path = src/Node.h; sourceTree = SOURCE_ROOT; };
+		8856F6401A585B9A00470C83 /* black_wood_bright.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = black_wood_bright.jpg; sourceTree = "<group>"; };
+		8856F6571A585C7700470C83 /* black_wood_bright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black_wood_bright.png; sourceTree = "<group>"; };
+		8856F65C1A585DA900470C83 /* white_wood_bright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_wood_bright.png; sourceTree = "<group>"; };
+		8856F65E1A58610700470C83 /* Position.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Position.cpp; path = data/Position.cpp; sourceTree = SOURCE_ROOT; };
+		8856F65F1A58610700470C83 /* Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Position.h; path = data/Position.h; sourceTree = SOURCE_ROOT; };
 		88586FAC19EC5D3300D2AB72 /* libGLEW.1.11.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.1.11.0.dylib; path = ../../../../../../../usr/local/Cellar/glew/1.11.0/lib/libGLEW.1.11.0.dylib; sourceTree = "<group>"; };
 		88586FAD19EC5D3300D2AB72 /* libGLEWmx.1.11.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEWmx.1.11.0.dylib; path = ../../../../../../../usr/local/Cellar/glew/1.11.0/lib/libGLEWmx.1.11.0.dylib; sourceTree = "<group>"; };
 		88BD83891A2E339700C42C96 /* Piece.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Piece.cpp; path = src/Piece.cpp; sourceTree = SOURCE_ROOT; };
@@ -267,6 +279,8 @@
 				880E56E31A2E24B20024A510 /* Board.h */,
 				88BD83891A2E339700C42C96 /* Piece.cpp */,
 				88BD838A1A2E339700C42C96 /* Piece.h */,
+				8856F65E1A58610700470C83 /* Position.cpp */,
+				8856F65F1A58610700470C83 /* Position.h */,
 			);
 			path = CGFExample;
 			sourceTree = "<group>";
@@ -315,6 +329,9 @@
 		AA63E23916D422CA003287C6 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				8856F65C1A585DA900470C83 /* white_wood_bright.png */,
+				8856F6571A585C7700470C83 /* black_wood_bright.png */,
+				8856F6401A585B9A00470C83 /* black_wood_bright.jpg */,
 				D99A52971A56A8FD00E633EA /* black_wood.jpg */,
 				D99A52981A56A8FD00E633EA /* cena.anf */,
 				D99A52991A56A8FD00E633EA /* cena1.anf */,
@@ -399,6 +416,7 @@
 				880D99C61A0005E7003758B3 /* ControlPoint.cpp in Sources */,
 				880E56E91A2E26210024A510 /* PickInterface.cpp in Sources */,
 				88D587C219D1CE2F0010B547 /* tinystr.cpp in Sources */,
+				8856F6601A58610700470C83 /* Position.cpp in Sources */,
 				885659E519E415DE002328BF /* Graph.cpp in Sources */,
 				AA63E1BC16D41568003287C6 /* Scene.cpp in Sources */,
 				88D587C519D1CE2F0010B547 /* tinyxmlparser.cpp in Sources */,

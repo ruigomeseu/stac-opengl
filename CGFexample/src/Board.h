@@ -19,6 +19,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <regex>
+#include "Position.h"
 
 using namespace std;
 
@@ -31,10 +32,12 @@ private:
     Appearance * appearance_white = new Appearance();
     
     Appearance * appearance_black = new Appearance();
+    
+    Appearance * appearance_white_bright = new Appearance();
+    
+    Appearance * appearance_black_bright = new Appearance();
     Piece * piece;
     std::string board[5][5];
-    
-    std::vector<std::pair<int, int> > movesHistory;
     
     // current player
     std::string currentPlayer;
@@ -46,14 +49,23 @@ private:
     
     
     std::vector<std::string> * boardsHistory;
+    
     std::vector<std::string> carryHistory;
+    std::vector<int> moves_x_History;
+    std::vector<int> moves_y_History;
+    
+    
 public:
     Board(){
         node = new Node(true);
         piece = new Piece();
         node->addPrimitives(piece);
+        
         appearance_white->setTexture("../data/white_wood.jpg");
         appearance_black->setTexture("../data/black_wood.jpg");
+        appearance_black_bright->setTexture("../data/black_wood_bright.png");
+        appearance_white_bright->setTexture("../data/white_wood_bright.png");
+        
         this->loadFromString("[[p1,p1,p1,p1,b1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[p1,p1,p1,p1,p1],[a1,p1,p1,p1,p1]].");
         this->currentPlayer="a1";
         this->carry=false;
@@ -78,18 +90,23 @@ public:
     
     void addMoveToHistory(int toX, int toY)
     {
-        pair<int, int> p1 = {toX, toY};
-        this->movesHistory.push_back(p1);
+        this->moves_x_History.push_back(toX);
+        this->moves_y_History.push_back(toY);
     }
     
     void removeLastMoveFromHistory()
     {
-        this->movesHistory.pop_back();
+        this->moves_x_History.pop_back();
+        this->moves_y_History.pop_back();
     }
     
-    std::vector<std::pair<int, int> > getMovesHistory(){
-        return this->movesHistory;
+    std::vector<int> getMoves_X_History(){
+        return this->moves_x_History;
     }
+    std::vector<int> getMoves_Y_History(){
+        return this->moves_y_History;
+    }
+    
     
     
     bool getHasAnimation(){
@@ -141,6 +158,9 @@ public:
             carry = true;
         }
     }
+    void setPlayer(std::string player){
+        this->currentPlayer = player;
+    }
     void changePlayer(){
         if(strcmp(currentPlayer.c_str(), "a1") == 0){
             currentPlayer="b1";
@@ -149,7 +169,11 @@ public:
         }
     }
     
+    std::vector<Position> calculatePossibleMoves();
     
+    void setBoardHistory(std::vector<std::string> * boardsHistory){
+        this->boardsHistory = boardsHistory;
+    }
     
     std::vector<std::string> * getBoardsHistory(){
         return this->boardsHistory;

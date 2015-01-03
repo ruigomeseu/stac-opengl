@@ -113,10 +113,9 @@ void PickInterface::initGUI(){
     
     
     addButton("Undo", 1);
-    addButton("Movie", 2);
     
     
-    
+    /*
     
     std::map<std::string, Node *> * nodes = ((Scene*) scene)->getGraph()->getNodes();
     
@@ -136,20 +135,21 @@ void PickInterface::initGUI(){
             }
         }
     }
-    
+    */
 }
 
 
 
 void PickInterface::processGUI(GLUI_Control *ctrl){
     /** Scenarios HANDLE **/
+    /*
     Node * node1 = ((Scene*)scene)->getGraph()->getNodes()->at(currentScenario);
     node1->setActive(false);
     cout << "var = " << scenariovar<< ", " << scenarioVars.at(scenariovar-1) <<endl;
     Node * node = ((Scene*)scene)->getGraph()->getNodes()->at(scenarioVars.at(scenariovar-1));
     node->setActive(true);
     currentScenario =scenarioVars.at(scenariovar-1);
-    
+    */
     //scene->setActiveCamera(camerasVector->at(camerasVar));
     
     
@@ -171,7 +171,10 @@ void PickInterface::processGUI(GLUI_Control *ctrl){
         }
             break;
         case 2:{
-            this->movie();
+           /*
+            ((Scene* ) scene)->movie(((Scene*) scene)->getGameBoard()->getMoves_X_History(),
+                                     ((Scene*) scene)->getGameBoard()->getMoves_Y_History(),
+                                     ((Scene*) scene)->getGameBoard()->getCarryHistory());*/
         }
             break;
         default:
@@ -250,60 +253,6 @@ void PickInterface::processKeyboard(unsigned char key, int x, int y){
             break;
     }
 }
-
-
-void PickInterface::movie(){
-    std::vector< std::pair<int, int> > movesHistory;
-    
-    std::vector< std::string > carryHistory;
-    
-    movesHistory = ((Scene *) scene)->getGameBoard()->getMovesHistory();
-    carryHistory = ((Scene *) scene)->getGameBoard()->getCarryHistory();
-    
-    ((Scene*) scene)->getGameBoard()->resetBoard();
-    
-    for ( unsigned int i = 0; i < movesHistory.size(); i++  ){
-        std::string cmd;
-        cmd.append("comando(");
-        cmd.append(((Scene *) scene)->getGameBoard()->toString());
-        cmd.append(",");
-        cmd.append(((Scene *) scene)->getGameBoard()->getCurrentPlayer());
-        cmd.append(",");
-        cmd.append(to_string(movesHistory.at(i).first ));
-        cmd.append(",");
-        cmd.append(to_string(movesHistory.at(i).second ));
-        cmd.append(",");
-        std::string carry = carryHistory.at(i);
-        cmd.append(carry);
-        cmd.append(").\n");
-        
-        sendMessageSocket(sock_address, cmd);
-        
-        std::string newBoard;
-        newBoard = receiveMessageSocket(sock_address);
-        
-        if(strstr(newBoard.c_str(), "end_game.")!=NULL){
-            std::cout << "ended game" << std::endl;
-            ((Scene *) scene)->getGameBoard()->resetBoard();
-        }
-        
-        if(strstr(newBoard.c_str(), "fail.")==NULL && strstr(newBoard.c_str(), "end_game.")==NULL){
-            ((Scene *) scene)->getGameBoard()->addMoveToHistory(movesHistory.at(i).first, movesHistory.at(i).second);
-            ((Scene *) scene)->getGameBoard()->addCarryToHistory(carry);
-            
-            ((Scene * ) scene)->getGameBoard()->animate(movesHistory.at(i).first , movesHistory.at(i). second);
-            // ((Scene *) scene)->getGameBoard()->loadFromString(newBoard);
-            // save new board to history of boards.
-            
-            ((Scene *) scene)->getGameBoard()->addBoardToHistory(newBoard);
-            ((Scene *) scene)->getGameBoard()->changePlayer();
-        }
-        
-    }
-    // this should be replaced by code handling the picked object's ID's (stored in "selected"),
-    // possibly invoking a method on the scene class and passing "selected" and "nselected"
-}
-
 void PickInterface::processHits (GLint hits, GLuint buffer[]) 
 {
 	GLuint *ptr = buffer;
@@ -329,6 +278,7 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
 			ptr++;
 	}
 	
+    
 	// if there were hits, the one selected is in "selected", and it consist of nselected "names" (integer ID's)
 	if (selected!=NULL)
 	{
@@ -339,7 +289,7 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
         cmd.append("comando(");
         cmd.append(((Scene *) scene)->getGameBoard()->toString());
         cmd.append(",");
-        cmd.append(((Scene *) scene)->getGameBoard()->getCurrentPlayer());
+        cmd.append(currentPlayer);
         cmd.append(",");
         cmd.append(to_string(selected[0]));
         cmd.append(",");
@@ -371,16 +321,28 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
             std::cout << "ended game" << std::endl;
             ((Scene *) scene)->getGameBoard()->resetBoard();
         }
-        
+        cout << "here"<<endl;
         if(strstr(newBoard.c_str(), "fail.")==NULL && strstr(newBoard.c_str(), "end_game.")==NULL){
             ((Scene *) scene)->getGameBoard()->addMoveToHistory(selected[0], selected[1]);
             ((Scene *) scene)->getGameBoard()->addCarryToHistory(carry);
+            
+            
+            
+            ((Scene *) scene)->getGameBoard()->setPlayer(currentPlayer);
+            cout << "animate..."<<endl;
             
             ((Scene * ) scene)->getGameBoard()->animate(selected[0], selected[1]);
             // ((Scene *) scene)->getGameBoard()->loadFromString(newBoard);
             // save new board to history of boards.
             
             ((Scene *) scene)->getGameBoard()->addBoardToHistory(newBoard);
+            
+            if(strcmp(currentPlayer.c_str(), "a1") == 0){
+                currentPlayer="b1";
+            }else{
+                currentPlayer="a1";
+            }
+            
             ((Scene *) scene)->getGameBoard()->changePlayer();
         }
 	}
