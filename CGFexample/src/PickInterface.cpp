@@ -26,6 +26,81 @@ GLuint selectBuf[BUFSIZE];
 bool openedSocket = false;
 int sock_address;
 
+
+std::string receiveMessageSocket(int socket){
+    int pos = 0;
+    char msgRecv[BUFS];
+    char bufferCleaner[BUFS];
+    
+    while(true){
+        recv(socket, &msgRecv[pos], 1, 0);
+        if(msgRecv[pos]=='.')
+        {
+            msgRecv[pos+1]='\n';
+            break;
+        }
+        pos++;
+    }
+    /*
+     if(strcmp(msgRecv, "fail") !=0){
+     recv(socket, &bufferCleaner, BUFS, 0);
+     cout << "Buffer = " << bufferCleaner <<endl;
+     recv(socket, &bufferCleaner, BUFS, 0);
+     cout << "Buffer = " << bufferCleaner <<endl;
+     recv(socket, &bufferCleaner, BUFS, 0);
+     cout << "Buffer = " << bufferCleaner <<endl;
+     }*/
+    return msgRecv;
+}
+
+
+int openSocket(std::string hostname, int port){
+    int sock;
+    struct sockaddr_in server;
+    struct hostent *hp;
+    char buf[BUFS];
+    
+    sock = socket(AF_INET, SOCK_STREAM, 0);
+    if (sock < 0)
+    {
+        perror("Opening stream socket");
+        exit(1);
+    }
+    
+    /* Connect socket using server name indicated in the command line */
+    server.sin_family = AF_INET;
+    hp = gethostbyname(hostname.c_str());
+    
+    if (hp == NULL)
+    {
+        perror("Trying to get host by name");
+        exit(2);
+    }
+    memcpy((char *)&server.sin_addr, (char *)hp->h_addr, hp->h_length);
+    server.sin_port = htons(port);
+    
+    if (connect(sock, (struct sockaddr *)&server, sizeof server) < 0)
+    {
+        perror("Connecting stream socket");
+        exit(1);
+    }
+    
+    return sock;
+}
+
+void closeSocket(int socket){
+    close(socket);
+}
+
+void sendMessageSocket(int socket, std::string message){
+    if (write (socket, message.c_str(), strlen(message.c_str())) < 0)
+        perror("Writing on stream socket");
+    
+}
+
+
+
+
 void PickInterface::initGUI(){
     /** MAIN PANEL */
     GLUI_Panel * panel=addPanel("Painel de Controlo");
@@ -42,6 +117,7 @@ void PickInterface::initGUI(){
     GLUI_RadioGroup* representation = addRadioGroupToPanel(representationPanel, 0, 0);
     
     addButton("Undo", 1);
+    addButton("Movie", 2);
     
     addRadioButtonToGroup(representation, "Fill");
     addRadioButtonToGroup(representation, "Wired");
@@ -49,9 +125,10 @@ void PickInterface::initGUI(){
 }
 
 
+
 void PickInterface::processGUI(GLUI_Control *ctrl){
     switch(ctrl->get_id()){
-        case 1:
+        case 1:{
             std::vector<std::string> * boards = ((Scene * ) scene)->getGameBoard()->getBoardsHistory();
             if(boards->size()==1)
                 return;
@@ -65,7 +142,13 @@ void PickInterface::processGUI(GLUI_Control *ctrl){
             ((Scene * ) scene)->getGameBoard()->loadFromString(board);
             ((Scene * ) scene)->getGameBoard()->changePlayer();
             ((Scene * ) scene)->getGameBoard()->setCarry(false);
-            
+        }
+            break;
+        case 2:{
+            this->movie();
+        }
+            break;
+        default:
             break;
     }
 }
@@ -131,50 +214,6 @@ void PickInterface::performPicking(int x, int y)
 	processHits(hits, selectBuf);
 }
 
-int openSocket(std::string hostname, int port){
-    int sock;
-    struct sockaddr_in server;
-    struct hostent *hp;
-    char buf[BUFS];
-    
-    sock = socket(AF_INET, SOCK_STREAM, 0);
-    if (sock < 0)
-    {
-        perror("Opening stream socket");
-        exit(1);
-    }
-    
-    /* Connect socket using server name indicated in the command line */
-    server.sin_family = AF_INET;
-    hp = gethostbyname(hostname.c_str());
-    
-    if (hp == NULL)
-    {
-        perror("Trying to get host by name");
-        exit(2);
-    }
-    memcpy((char *)&server.sin_addr, (char *)hp->h_addr, hp->h_length);
-    server.sin_port = htons(port);
-    
-    if (connect(sock, (struct sockaddr *)&server, sizeof server) < 0)
-    {
-        perror("Connecting stream socket");
-        exit(1);
-    }
-    
-    return sock;
-}
-
-void closeSocket(int socket){
-    close(socket);
-}
-
-void sendMessageSocket(int socket, std::string message){
-    if (write (socket, message.c_str(), strlen(message.c_str())) < 0)
-        perror("Writing on stream socket");
-    
-}
-
 void PickInterface::processKeyboard(unsigned char key, int x, int y){
     switch(key){
         case 'a':
@@ -186,30 +225,57 @@ void PickInterface::processKeyboard(unsigned char key, int x, int y){
     }
 }
 
-std::string receiveMessageSocket(int socket){
-    int pos = 0;
-    char msgRecv[BUFS];
-    char bufferCleaner[BUFS];
+
+void PickInterface::movie(){
+    std::vector< std::pair<int, int> > movesHistory;
     
-    while(true){
-        recv(socket, &msgRecv[pos], 1, 0);
-        if(msgRecv[pos]=='.')
-        {
-            msgRecv[pos+1]='\n';
-            break;
+    std::vector< std::string > carryHistory;
+    
+    movesHistory = ((Scene *) scene)->getGameBoard()->getMovesHistory();
+    carryHistory = ((Scene *) scene)->getGameBoard()->getCarryHistory();
+    
+    ((Scene*) scene)->getGameBoard()->resetBoard();
+    
+    for ( unsigned int i = 0; i < movesHistory.size(); i++  ){
+        std::string cmd;
+        cmd.append("comando(");
+        cmd.append(((Scene *) scene)->getGameBoard()->toString());
+        cmd.append(",");
+        cmd.append(((Scene *) scene)->getGameBoard()->getCurrentPlayer());
+        cmd.append(",");
+        cmd.append(to_string(movesHistory.at(i).first ));
+        cmd.append(",");
+        cmd.append(to_string(movesHistory.at(i).second ));
+        cmd.append(",");
+        std::string carry = carryHistory.at(i);
+        cmd.append(carry);
+        cmd.append(").\n");
+        
+        sendMessageSocket(sock_address, cmd);
+        
+        std::string newBoard;
+        newBoard = receiveMessageSocket(sock_address);
+        
+        if(strstr(newBoard.c_str(), "end_game.")!=NULL){
+            std::cout << "ended game" << std::endl;
+            ((Scene *) scene)->getGameBoard()->resetBoard();
         }
-        pos++;
+        
+        if(strstr(newBoard.c_str(), "fail.")==NULL && strstr(newBoard.c_str(), "end_game.")==NULL){
+            ((Scene *) scene)->getGameBoard()->addMoveToHistory(movesHistory.at(i).first, movesHistory.at(i).second);
+            ((Scene *) scene)->getGameBoard()->addCarryToHistory(carry);
+            
+            ((Scene * ) scene)->getGameBoard()->animate(movesHistory.at(i).first , movesHistory.at(i). second);
+            // ((Scene *) scene)->getGameBoard()->loadFromString(newBoard);
+            // save new board to history of boards.
+            
+            ((Scene *) scene)->getGameBoard()->addBoardToHistory(newBoard);
+            ((Scene *) scene)->getGameBoard()->changePlayer();
+        }
+        
     }
-    /*
-    if(strcmp(msgRecv, "fail") !=0){
-        recv(socket, &bufferCleaner, BUFS, 0);
-        cout << "Buffer = " << bufferCleaner <<endl;
-        recv(socket, &bufferCleaner, BUFS, 0);
-        cout << "Buffer = " << bufferCleaner <<endl;
-        recv(socket, &bufferCleaner, BUFS, 0);
-        cout << "Buffer = " << bufferCleaner <<endl;
-    }*/
-    return msgRecv;
+    // this should be replaced by code handling the picked object's ID's (stored in "selected"),
+    // possibly invoking a method on the scene class and passing "selected" and "nselected"
 }
 
 void PickInterface::processHits (GLint hits, GLuint buffer[]) 
@@ -281,10 +347,13 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
         }
         
         if(strstr(newBoard.c_str(), "fail.")==NULL && strstr(newBoard.c_str(), "end_game.")==NULL){
+            ((Scene *) scene)->getGameBoard()->addMoveToHistory(selected[0], selected[1]);
+            ((Scene *) scene)->getGameBoard()->addCarryToHistory(carry);
+            
             ((Scene * ) scene)->getGameBoard()->animate(selected[0], selected[1]);
             // ((Scene *) scene)->getGameBoard()->loadFromString(newBoard);
             // save new board to history of boards.
-            ((Scene *) scene)->getGameBoard()->addMoveToHistory(selected[0], selected[1]);
+            
             ((Scene *) scene)->getGameBoard()->addBoardToHistory(newBoard);
             ((Scene *) scene)->getGameBoard()->changePlayer();
         }

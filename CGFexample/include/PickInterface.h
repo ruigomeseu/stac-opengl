@@ -15,6 +15,9 @@ private:
     
     void initGUI();
     virtual void processGUI(GLUI_Control *ctrl);
+    
+    
+    void movie();
 };
 
 

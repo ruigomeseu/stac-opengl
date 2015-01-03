@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "Primitives.h"
 #include <cstring>
+#include <utility>
 #include "Node.h"
 #include "Piece.h"
 #include <sstream>
@@ -45,7 +46,7 @@ private:
     
     
     std::vector<std::string> * boardsHistory;
-    
+    std::vector<std::string> carryHistory;
 public:
     Board(){
         node = new Node(true);
@@ -63,6 +64,18 @@ public:
         
     }
     
+    void addCarryToHistory(std::string carry){
+        this->carryHistory.push_back(carry);
+    }
+    
+    std::vector<std::string > getCarryHistory(){
+        return this->carryHistory;
+    }
+    
+    void removeLastCarryFromHistory(){
+        this->carryHistory.pop_back();
+    }
+    
     void addMoveToHistory(int toX, int toY)
     {
         pair<int, int> p1 = {toX, toY};
@@ -73,6 +86,11 @@ public:
     {
         this->movesHistory.pop_back();
     }
+    
+    std::vector<std::pair<int, int> > getMovesHistory(){
+        return this->movesHistory;
+    }
+    
     
     bool getHasAnimation(){
         return this->hasAnimation;
