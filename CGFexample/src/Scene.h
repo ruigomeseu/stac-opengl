@@ -64,7 +64,7 @@ public:
     }
     
     
-    
+    GLUI_StaticText * timeText;
     bool isMovie;
     
     /*

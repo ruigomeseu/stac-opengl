@@ -114,6 +114,14 @@ void PickInterface::initGUI(){
     
     addButton("Undo", 1);
     
+    float timeNow = time(NULL) - startTime;
+    
+    char array[10];
+    sprintf(array, "%f", timeNow);
+    
+    GLUI_StaticText * timeText = addStaticTextToPanel(panel, "Time");
+    ((Scene * ) scene)->timeText = timeText;
+
     
     /*
     

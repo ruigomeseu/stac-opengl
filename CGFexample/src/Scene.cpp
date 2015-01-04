@@ -185,6 +185,12 @@ void Scene::update(unsigned long t)
     
     lastMilis = t;
     
+    stringstream timeString;
+    
+    timeString << "Play time: \n" << (t/1000)/60  << " minutes and " << (t/1000)%60 << " seconds";
+    
+    timeText->set_text(timeString.str().c_str());
+    
     
 	shader->bind();
 	shader->update(t/400.0);

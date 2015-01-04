@@ -9,6 +9,8 @@ private:
     int undo_id;
     int scenariovar;
     
+    float startTime = time(NULL);
+    
     std::vector<std::string> scenarioVars;
     std::string currentScenario;
     
