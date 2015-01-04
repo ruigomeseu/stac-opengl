@@ -115,7 +115,7 @@ void PickInterface::initGUI(){
     addButton("Undo", 1);
     
     
-    /*
+    
     
     std::map<std::string, Node *> * nodes = ((Scene*) scene)->getGraph()->getNodes();
     
@@ -135,21 +135,24 @@ void PickInterface::initGUI(){
             }
         }
     }
-    */
+    
 }
 
 
 
 void PickInterface::processGUI(GLUI_Control *ctrl){
     /** Scenarios HANDLE **/
-    /*
+    cout << scenarioVars.size()<<endl;
     Node * node1 = ((Scene*)scene)->getGraph()->getNodes()->at(currentScenario);
+    cout << "scenario false = " << node1->getID()<<endl;
     node1->setActive(false);
-    cout << "var = " << scenariovar<< ", " << scenarioVars.at(scenariovar-1) <<endl;
-    Node * node = ((Scene*)scene)->getGraph()->getNodes()->at(scenarioVars.at(scenariovar-1));
+    cout << "var = " << scenariovar<< ", " << scenarioVars.at(scenariovar) <<endl;
+    Node * node = ((Scene*)scene)->getGraph()->getNodes()->at(scenarioVars.at(scenariovar));
+    
+    cout << "scenario true = " << node->getID()<<endl;
     node->setActive(true);
-    currentScenario =scenarioVars.at(scenariovar-1);
-    */
+    currentScenario = scenarioVars.at(scenariovar);
+    
     //scene->setActiveCamera(camerasVector->at(camerasVar));
     
     
@@ -321,7 +324,6 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
             std::cout << "ended game" << std::endl;
             ((Scene *) scene)->getGameBoard()->resetBoard();
         }
-        cout << "here"<<endl;
         if(strstr(newBoard.c_str(), "fail.")==NULL && strstr(newBoard.c_str(), "end_game.")==NULL){
             ((Scene *) scene)->getGameBoard()->addMoveToHistory(selected[0], selected[1]);
             ((Scene *) scene)->getGameBoard()->addCarryToHistory(carry);
@@ -329,7 +331,6 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
             
             
             ((Scene *) scene)->getGameBoard()->setPlayer(currentPlayer);
-            cout << "animate..."<<endl;
             
             ((Scene * ) scene)->getGameBoard()->animate(selected[0], selected[1]);
             // ((Scene *) scene)->getGameBoard()->loadFromString(newBoard);
@@ -342,8 +343,9 @@ void PickInterface::processHits (GLint hits, GLuint buffer[])
             }else{
                 currentPlayer="a1";
             }
-            
-            ((Scene *) scene)->getGameBoard()->changePlayer();
+            cout << "current player before set=  " << currentPlayer<<endl;
+            ((Scene *) scene)->getGameBoard()->setPlayer(currentPlayer);
+            cout << "player after set = " << ((Scene *) scene)->getGameBoard()->getCurrentPlayer()<<endl;
         }
 	}
 	else

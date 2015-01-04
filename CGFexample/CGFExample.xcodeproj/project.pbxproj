@@ -43,6 +43,7 @@
 		8856F6581A585C8400470C83 /* black_wood_bright.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8856F6571A585C7700470C83 /* black_wood_bright.png */; };
 		8856F65D1A585DB600470C83 /* white_wood_bright.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8856F65C1A585DA900470C83 /* white_wood_bright.png */; };
 		8856F6601A58610700470C83 /* Position.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8856F65E1A58610700470C83 /* Position.cpp */; };
+		8856F6621A5980F800470C83 /* sand.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8856F6611A5980EA00470C83 /* sand.jpg */; };
 		88586FAB19EC5D1B00D2AB72 /* libglui.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA63E23116D4221C003287C6 /* libglui.a */; };
 		88586FAE19EC5D3300D2AB72 /* libGLEW.1.11.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 88586FAC19EC5D3300D2AB72 /* libGLEW.1.11.0.dylib */; };
 		88586FAF19EC5D3300D2AB72 /* libGLEWmx.1.11.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 88586FAD19EC5D3300D2AB72 /* libGLEWmx.1.11.0.dylib */; };
@@ -70,6 +71,7 @@
 			dstPath = ../data;
 			dstSubfolderSpec = 16;
 			files = (
+				8856F6621A5980F800470C83 /* sand.jpg in CopyFiles */,
 				8856F65D1A585DB600470C83 /* white_wood_bright.png in CopyFiles */,
 				8856F6581A585C8400470C83 /* black_wood_bright.png in CopyFiles */,
 				8856F6421A585C2600470C83 /* black_wood_bright.jpg in CopyFiles */,
@@ -128,6 +130,7 @@
 		8856F65C1A585DA900470C83 /* white_wood_bright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_wood_bright.png; sourceTree = "<group>"; };
 		8856F65E1A58610700470C83 /* Position.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Position.cpp; path = data/Position.cpp; sourceTree = SOURCE_ROOT; };
 		8856F65F1A58610700470C83 /* Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Position.h; path = data/Position.h; sourceTree = SOURCE_ROOT; };
+		8856F6611A5980EA00470C83 /* sand.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sand.jpg; sourceTree = "<group>"; };
 		88586FAC19EC5D3300D2AB72 /* libGLEW.1.11.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.1.11.0.dylib; path = ../../../../../../../usr/local/Cellar/glew/1.11.0/lib/libGLEW.1.11.0.dylib; sourceTree = "<group>"; };
 		88586FAD19EC5D3300D2AB72 /* libGLEWmx.1.11.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEWmx.1.11.0.dylib; path = ../../../../../../../usr/local/Cellar/glew/1.11.0/lib/libGLEWmx.1.11.0.dylib; sourceTree = "<group>"; };
 		88BD83891A2E339700C42C96 /* Piece.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Piece.cpp; path = src/Piece.cpp; sourceTree = SOURCE_ROOT; };
@@ -329,6 +332,7 @@
 		AA63E23916D422CA003287C6 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				8856F6611A5980EA00470C83 /* sand.jpg */,
 				8856F65C1A585DA900470C83 /* white_wood_bright.png */,
 				8856F6571A585C7700470C83 /* black_wood_bright.png */,
 				8856F6401A585B9A00470C83 /* black_wood_bright.jpg */,

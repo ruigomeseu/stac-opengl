@@ -211,10 +211,13 @@ void Scene::display()
     
 
     // Apply transformations corresponding to the camera position relative to the origin
+    //CGFscene::activeCamera->setY(-3);
+    //CGFscene::activeCamera->setZ(-12);
     
     CGFscene::activeCamera->applyView();
     //showCamera();
 
+    
 	// Draw axis
 	axis.draw();
     
