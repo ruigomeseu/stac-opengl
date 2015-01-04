@@ -137,7 +137,7 @@ public:
     }
     void increment(unsigned long t)
     {
-        std::cout << "incrementing" << std::endl;
+        //std::cout << "incrementing" << std::endl;
         float distanceToWalk = (speed * t) / 1000;
         
         if(currentPoint + 1 < controlPoints.size())
@@ -155,18 +155,18 @@ public:
             distanceToWalkZ += currentAnimationPoint.getZ();
             
             ControlPoint pointToAnimate(distanceToWalkX, distanceToWalkY, distanceToWalkZ);
-            std::cout << "calculated point2" << std::endl;
+            //std::cout << "calculated point2" << std::endl;
             
             this->currentAnimationPoint = pointToAnimate;
             
-            std::cout << "drawn = false" << std::endl;
+            //std::cout << "drawn = false" << std::endl;
             this->drawnThisFrame = false;
             
-            std::cout << "Distanced walked (sum): " << sumDistanceWalked << std::endl;
-            std::cout << "Distance between points: " << distanceBetweenPoints(controlPoints[currentPoint], controlPoints[currentPoint+1]) << std::endl;
+            //std::cout << "Distanced walked (sum): " << sumDistanceWalked << std::endl;
+            //std::cout << "Distance between points: " << distanceBetweenPoints(controlPoints[currentPoint], controlPoints[currentPoint+1]) << std::endl;
             
             if(sumDistanceWalked > distanceBetweenPoints(controlPoints[currentPoint], controlPoints[currentPoint+1])) {
-                std::cout << "Animation point increased" << std::endl;
+               // std::cout << "Animation point increased" << std::endl;
                 sumDistanceWalked = 0;
                 
                 currentPoint++;

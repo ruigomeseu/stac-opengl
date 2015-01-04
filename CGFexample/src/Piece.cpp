@@ -12,6 +12,10 @@ void Piece::draw(){
     glPushMatrix();
     
     Cylinder * cylinder = new Cylinder();
+    Sphere * sphere = new Sphere();
+    sphere->setRadius(1);
+    sphere->setSlices(10);
+    sphere->setStacks(10);
     
     cylinder->setBase(1);
     cylinder->setHeight(1);
@@ -30,15 +34,23 @@ void Piece::draw(){
     }else if(strcmp(piece.c_str(), "a0") == 0){
         appearance_white->apply();
         cylinder->draw();
+        glTranslatef(0, 0, 2);
+        sphere->draw();
     }else if(strcmp(piece.c_str(), "b0") == 0){
         appearance_black->apply();
         cylinder->draw();
+        glTranslatef(0, 0, 2);
+        sphere->draw();
     }else if(strcmp(piece.c_str(), "a1") == 0){
         appearance_white->apply();
         cylinder->draw();
+        glTranslatef(0, 0, 2);
+        sphere->draw();
     }else if(strcmp(piece.c_str(), "b1") == 0){
         appearance_black->apply();
         cylinder->draw();
+        glTranslatef(0, 0, 2);
+        sphere->draw();
     }
     
     glPopMatrix();

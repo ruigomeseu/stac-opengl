@@ -36,6 +36,10 @@ class CGFcamera
 		virtual bool moveTo(int axis, float value, float increment=0.5f);		///< Moves the camera along _axis_ by _increment_ units, unless _value_ has been reached.
 		virtual bool translate(int axis, float value);							///< Moves the camera along _axis_ by _value_ units.
 		//@}
+    
+    float getPositionX(){return this->position[0];}
+    float getPositionY(){return this->position[1];}
+    float getPositionZ(){return this->position[2];}
 
 	protected:
 		float position[3]; //= {0.0,0.0,-25.0};

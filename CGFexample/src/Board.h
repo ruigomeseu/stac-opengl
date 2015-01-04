@@ -159,10 +159,11 @@ public:
         }
     }
     void setPlayer(std::string player){
+        this->currentPlayer.clear();
         this->currentPlayer = player;
     }
     void changePlayer(){
-        if(strcmp(currentPlayer.c_str(), "a1") == 0){
+        if(currentPlayer.compare("a1") == 0){
             currentPlayer="b1";
         }else{
             currentPlayer="a1";

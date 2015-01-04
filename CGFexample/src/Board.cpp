@@ -12,11 +12,17 @@ void Board::animateIfExists(int i, int j, int pieceToAnimate[2])
 {
     if(this->hasAnimation && i == pieceToAnimate[0] && j == pieceToAnimate[1])
     {
+        cout << "current player = " << currentPlayer<<endl;
         if(this->animation->getFinished()){
+            cout << "current player = " << currentPlayer<<endl;
             cout << "animation ended" << endl;
+            cout << "current player 1 = " << currentPlayer<<endl;
             this->hasAnimation = false;
-            loadFromString(boardsHistory->at(boardsHistory->size()-1));
-            setCarry(false);
+            cout << "current player 2 = " << currentPlayer<<endl;
+            this->loadFromString(boardsHistory->at(boardsHistory->size()-1));
+            cout << "current player 3 = " << currentPlayer<<endl;
+            this->carry = false;
+            cout << "current player 4 = " << currentPlayer<<endl;
         }
         
         this->animation->increment(30);
@@ -48,7 +54,7 @@ std::vector<Position> Board::calculatePossibleMoves(){
     }
 
     std::string otherPlayer ;
-    if(strcmp(currentPlayer.c_str(), "a1") == 0){
+    if(currentPlayer.compare("a1")== 0){
         otherPlayer="b1";
     }else{
         otherPlayer="a1";
@@ -324,13 +330,13 @@ std::string Board::toString(){
 void Board::animate(int toX, int toY)
 {
     int positionX, positionY;
-    
+    std::string player_aux = currentPlayer;
     // find player position
     for(int i=0; i < 5; i++)
     {
         for (int j=0; j<5; j++)
         {
-            if(board[i][j][0] == currentPlayer[0] && board[i][j][1] != 4)
+            if(board[i][j][0] == player_aux[0] && board[i][j][1] != 4)
             {
                 positionX = i;
                 positionY = j;
@@ -357,8 +363,8 @@ void Board::animate(int toX, int toY)
     
     this->animation->calculateTotalDistance();
     
-    cout << positionX << " to " << toX << endl;
-    cout << positionY << " to " << toY << endl;
+    //cout << positionX << " to " << toX << endl;
+    //cout << positionY << " to " << toY << endl;
 }
                                      
 ControlPoint Board::getOpenGlPosition(int x, int y)
@@ -376,33 +382,37 @@ ControlPoint Board::getOpenGlPosition(int x, int y)
 
 void Board::loadFromString(std::string board_string)
 {
-    cout << board_string << endl;
+    //cout << board_string << endl;
     
-    string pieceRegex = "[a-z]+[0-9]*";
+    cout << "current player 2.1 = " << currentPlayer<<endl;
+    
+    std::string pieceRegex = "[a-z]+[0-9]*";
+    std::string player_aux = currentPlayer;
     
     regex reg1(pieceRegex, regex_constants::icase);
+    cout << "current player 2.2 = " << currentPlayer<<endl;
     
     sregex_iterator it(board_string.begin(), board_string.end(), reg1);
     sregex_iterator it_end;
     
     int pieceNumber = 0;
     
+    cout << "current player 2.3 = " << currentPlayer<<endl;
+    
     while(it != it_end) {
         std::smatch match = *it;
         std::string match_str = match.str();
         
-        cout << match_str << endl;
+       // cout << match_str << endl;
         
+        cout << "current player 2.4 = " << currentPlayer<<endl;
         board[pieceNumber/5][pieceNumber%5] = match_str;
         
         ++it;
         pieceNumber++;
     }
     
-    for(int y = 0; y < 5; y++){
-        for(int x = 0; x < 5; x++){
-            cout << board[y][x] << " ";
-        }
-        cout << endl;
-    }
+    cout << "current player 2.5 = " << currentPlayer<<endl;
+    currentPlayer = player_aux;
+    cout << "current player 2.6 = " << currentPlayer<<endl;
 }
