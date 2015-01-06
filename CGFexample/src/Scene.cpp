@@ -225,7 +225,7 @@ void Scene::display()
 
     
 	// Draw axis
-	axis.draw();
+	//axis.draw();
     
     glDisable(GL_BLEND);
     
