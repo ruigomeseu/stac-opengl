@@ -230,9 +230,9 @@ void Scene::display()
     glDisable(GL_BLEND);
     
 	// ---- END Background, camera and axis setup
-    for(int i = 0; i < cgfLights->size(); i++) {
+    /*for(int i = 0; i < cgfLights->size(); i++) {
         cgfLights->at(i)->draw();
-    }
+    }*/
     
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); glEnable( GL_BLEND );
     

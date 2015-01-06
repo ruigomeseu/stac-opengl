@@ -39,13 +39,13 @@ void Board::animateIfExists(int i, int j, int pieceToAnimate[2])
 std::vector<Position> Board::calculatePossibleMoves(){
     int positionX, positionY;
     std::vector<Position> moves;
-    
+    cout << "curretn player moves = " << currentPlayer<<endl;
     // find player position
     for(int i=0; i < 5; i++)
     {
         for (int j=0; j<5; j++)
         {
-            if(board[i][j][0] == currentPlayer[0] && board[i][j][1] != 4)
+            if(board[i][j][0] == currentPlayer[0] && board[i][j][1] != '4')
             {
                 positionX = i;
                 positionY = j;
@@ -384,20 +384,17 @@ void Board::loadFromString(std::string board_string)
 {
     //cout << board_string << endl;
     
-    cout << "current player 2.1 = " << currentPlayer<<endl;
     
     std::string pieceRegex = "[a-z]+[0-9]*";
     std::string player_aux = currentPlayer;
     
     regex reg1(pieceRegex, regex_constants::icase);
-    cout << "current player 2.2 = " << currentPlayer<<endl;
     
     sregex_iterator it(board_string.begin(), board_string.end(), reg1);
     sregex_iterator it_end;
     
     int pieceNumber = 0;
     
-    cout << "current player 2.3 = " << currentPlayer<<endl;
     
     while(it != it_end) {
         std::smatch match = *it;
@@ -405,14 +402,12 @@ void Board::loadFromString(std::string board_string)
         
        // cout << match_str << endl;
         
-        cout << "current player 2.4 = " << currentPlayer<<endl;
         board[pieceNumber/5][pieceNumber%5] = match_str;
         
         ++it;
         pieceNumber++;
     }
     
-    cout << "current player 2.5 = " << currentPlayer<<endl;
     currentPlayer = player_aux;
-    cout << "current player 2.6 = " << currentPlayer<<endl;
+    
 }
