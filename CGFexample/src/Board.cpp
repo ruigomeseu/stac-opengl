@@ -336,7 +336,7 @@ void Board::animate(int toX, int toY)
     {
         for (int j=0; j<5; j++)
         {
-            if(board[i][j][0] == player_aux[0] && board[i][j][1] != 4)
+            if(board[i][j][0] == player_aux[0] && board[i][j][1] != '4')
             {
                 positionX = i;
                 positionY = j;
